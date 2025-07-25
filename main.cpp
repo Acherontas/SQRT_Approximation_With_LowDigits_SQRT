@@ -430,6 +430,9 @@ int main(int argc,char** argv)
     part_of *prt=new part_of();
     long double abqr;
     int psif=1;
+    int ps_ask;
+    cout<<"default 4 loops enter 4 or more \n";
+    cin>>ps_ask;
     for(;;){
     //cout<<"enter psifia arithmo \n";
     //cin>>psif;
@@ -459,7 +462,7 @@ int main(int argc,char** argv)
         cout<<"using " << std::setprecision(preci)<<lt_main << " * " << std::setprecision(preci)<<ldb <<"\n";
         cout<<std::setprecision(preci)<<adb<<"\n";
         psif+=1;
-        if(psif==5){break;}
+        if(psif==ps_ask){break;}
         cout<<"-------------------------------------------------------\n";
     }
 
