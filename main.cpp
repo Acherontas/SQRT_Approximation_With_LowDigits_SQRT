@@ -427,16 +427,22 @@ int main(int argc,char** argv)
     lt=gti->get_da_number(lt_main,2);
     int k=gti->gt_leng;
     cout<<std::setprecision(preci)<< k <<"\n";
+
+    lt=gti->get_da_number(mynmb,2);
+    int l=gti->gt_leng;
+    cout<<"lenght of " <<std::setprecision(preci) << mynmb <<  " is " << std::setprecision(preci) << l <<"\n";
+
     part_of *prt=new part_of();
     long double abqr;
     int psif=1;
     int ps_ask;
-    cout<<"default 4 loops enter 4 or more \n";
+    cout<<"default 4 loops enter 4 or more [4 is 3] \n";
     cin>>ps_ask;
     for(;;){
     //cout<<"enter psifia arithmo \n";
     //cin>>psif;
         cout<<"-------------------------------------------------------\n";
+        cout<<"times " << psif <<" ";
         prt->get_the_part(lt_main,psif-1);
         abqr=prt->qrt;
         part_of *ptr=new part_of();
@@ -453,15 +459,19 @@ int main(int argc,char** argv)
         ldb=(long double)baqr/(long double)ba;
         int by_one;
         cout<<"times of " <<std::setprecision(preci)<< ldb <<"\n";
-        cout<<"enter 10 100 1000\n";
-        cin>>by_one;
-        ldb=ldb*by_one;
+        //cout<<"enter 10 100 1000\n";
+        //cin>>by_one;
+        //ldb=ldb*by_one;
         cout<<"new times of " <<std::setprecision(preci)<< ldb <<"\n";
         long double adb;
         adb=lt_main*ldb;
         cout<<"using " << std::setprecision(preci)<<lt_main << " * " << std::setprecision(preci)<<ldb <<"\n";
-        cout<<std::setprecision(preci)<<adb<<"\n";
+        cout<<std::setprecision(preci)<<adb<<" ";
+        cout<<std::setprecision(preci)<<adb*10<<" ";
+        cout<<std::setprecision(preci)<<adb*100<<" ";
+        cout<<std::setprecision(preci)<<adb*1000<<"\n";
         psif+=1;
+        std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
         if(psif==ps_ask){break;}
         cout<<"-------------------------------------------------------\n";
     }
