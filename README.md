@@ -5,7 +5,7 @@ but it works
 
 it replaces the Boxes Like Approximation System 
 it works like the weirdo function 
-it can replace weirdo and be used in conjuction with 
+it can replace weirdo and can be used in conjuction with 
 the bee function 
 to show the result set
 
