@@ -3,6 +3,7 @@
 #include <iomanip>
 #include "get_the_sum.h"
 #include "after_the_dot.h"
+#include "part_of.h"
 #include <vector>
 #include <thread>
 #include <bits/stdc++.h>
@@ -30,13 +31,11 @@ using namespace std;
     long double xlip;
     int st_th;
     int v_log=-1;
-
-
     long double ckxlip;
     long double ckep,ckdd,ckddd,ckddf;
     long double cksh,ckshep,ckshdd;
-
     long double x_dv;
+
 void check_sqrt(long double mani,long double ep,long double dd,long double st,long double sh,long double shep,long double shdd,long double ddd,long double ddf)
 {
     fractpart=modf(ep,&intpart);
@@ -64,7 +63,6 @@ void check_sqrt(long double mani,long double ep,long double dd,long double st,lo
              if(ckxlip<=mani){xl.push_back(ckxlip);lx.push_back(ep);break;}
         }
     }
-
     if(ckep<=mani){xl.push_back(ckep);lx.push_back(dd);}
     if(ckep>mani){
         while(ckep>mani){
@@ -74,7 +72,6 @@ void check_sqrt(long double mani,long double ep,long double dd,long double st,lo
              if(ckep<=mani){xl.push_back(ckep);lx.push_back(dd);break;}
         }
     }
-
     if(ckdd<=mani){xl.push_back(ckdd);lx.push_back(st);}
     if(ckdd>mani){
        while(ckdd>mani){
@@ -84,7 +81,6 @@ void check_sqrt(long double mani,long double ep,long double dd,long double st,lo
              if(ckdd<=mani){xl.push_back(ckdd);lx.push_back(st);break;}
         }
     }
-
     if(ckddd<=mani){xl.push_back(ckddd);lx.push_back(sh);}
     if(ckddd>mani){
        while(ckddd>mani){
@@ -94,7 +90,6 @@ void check_sqrt(long double mani,long double ep,long double dd,long double st,lo
              if(ckddd<=mani){xl.push_back(ckddd);lx.push_back(sh);break;}
         }
     }
-
     if(ckddf<=mani){xl.push_back(ckddf);lx.push_back(shep);}
     if(ckddf>mani){
       while(ckddf>mani){
@@ -104,8 +99,6 @@ void check_sqrt(long double mani,long double ep,long double dd,long double st,lo
              if(ckddf<=mani){xl.push_back(ckddf);lx.push_back(shep);break;}
         }
     }
-
-
     if(cksh<=mani){xl.push_back(cksh);lx.push_back(shdd);}
     if(cksh>mani){
         while(cksh>mani){
@@ -115,7 +108,6 @@ void check_sqrt(long double mani,long double ep,long double dd,long double st,lo
              if(cksh<=mani){xl.push_back(cksh);lx.push_back(shdd);break;}
         }
     }
-
     if(ckshep<=mani){xl.push_back(ckshep);lx.push_back(ddd);}
     if(ckshep>mani){
       while(ckshep>mani){
@@ -125,7 +117,6 @@ void check_sqrt(long double mani,long double ep,long double dd,long double st,lo
              if(ckshep<=mani){xl.push_back(ckshep);lx.push_back(dd);break;}
         }
     }
-
     if(ckshdd<=mani){xl.push_back(ckshdd);lx.push_back(ddf);}
     if(ckshdd>mani){
        while(ckshdd>mani){
@@ -156,7 +147,6 @@ void show_xpl(){
   int olp=0;
   stable_sort(xpl.begin(),xpl.end());
   long double mlp;
-
   for(auto i=0;i<=xpl.size()-1;i++){
      //cout<<xpl[i] <<" ";
      if(xpl[0]+xl[i]==mynmb){
@@ -177,7 +167,6 @@ void show_xpl(){
                 vecl+=to_string(mynmb);
                 vecl+=" ";
                 lvec.push_back(vecl);
-
                 }
      olp+=1;
   }
@@ -211,10 +200,7 @@ int sqti(long double mnm,int one,int two){
                             cout<< "                 --> of section /2 " << std::setprecision(preci)<<section_h_dia_dio <<"\n";
                             cout<<"\n";
                             }
-
-
     check_sqrt(mnm,epi_dio,dia_dio,section_temp,section_h,section_h_epi_dio,section_h_dia_dio,dia_dio_dio,dia_dio_four);
-
     rt+=1;
    if(v_log==1){ cout<<"CDIS Start \n";}
     for(int i=1;i<=cs;i++){
@@ -239,10 +225,7 @@ int sqti(long double mnm,int one,int two){
                             cout<< "                 --> of section *2 " << std::setprecision(preci)<<section_h_epi_dio <<"\n";
                             cout<< "                 --> of section /2 " << std::setprecision(preci)<<section_h_dia_dio <<"\n";
                             cout<<"\n";}
-
-
-   check_sqrt(mnm,epi_dio,dia_dio,section_temp,section_h,section_h_epi_dio,section_h_dia_dio,dia_dio_dio,dia_dio_four);
-
+        check_sqrt(mnm,epi_dio,dia_dio,section_temp,section_h,section_h_epi_dio,section_h_dia_dio,dia_dio_dio,dia_dio_four);
         rt+=1;
         if(i>cs){break;}
     }
@@ -269,9 +252,7 @@ int sqti(long double mnm,int one,int two){
                             cout<< "                 --> of section /2 " << std::setprecision(preci)<<section_h_dia_dio <<"\n";
                             cout<<"\n";
                             }
-
-  check_sqrt(mnm,epi_dio,dia_dio,section_temp,section_h,section_h_epi_dio,section_h_dia_dio,dia_dio_dio,dia_dio_four);
-
+    check_sqrt(mnm,epi_dio,dia_dio,section_temp,section_h,section_h_epi_dio,section_h_dia_dio,dia_dio_dio,dia_dio_four);
     rt+=1;
     rsto[rt]=(long double)rsto[rt-1]/(long double)cdis[0];
     //da try
@@ -295,9 +276,7 @@ int sqti(long double mnm,int one,int two){
                             cout<< "                 --> of section /2 " << std::setprecision(preci)<<section_h_dia_dio <<"\n";
                             cout<<"\n";
                             }
-
     check_sqrt(mnm,epi_dio,dia_dio,section_temp,section_h,section_h_epi_dio,section_h_dia_dio,dia_dio_dio,dia_dio_four);
-
     //for(int i=0;i<=rt-1;i++){
     //  cout<< " @i "<< i << " " << std::setprecision(preci)<<rsto[i] <<"\n";
     //}
@@ -328,10 +307,8 @@ int sqti(long double mnm,int one,int two){
                             cout<< "                 --> of section /2 " << std::setprecision(preci)<<section_h_dia_dio <<"\n";
                             cout<<"\n";
                             }
-
-    check_sqrt(mnm,epi_dio,dia_dio,section_temp,section_h,section_h_epi_dio,section_h_dia_dio,dia_dio_dio,dia_dio_four);
-
-                            }
+       check_sqrt(mnm,epi_dio,dia_dio,section_temp,section_h,section_h_epi_dio,section_h_dia_dio,dia_dio_dio,dia_dio_four);
+        }
         if(rsto[i]<rsto[rt]){
                             afair=rsto[rt]-rsto[i];
                             //da try
@@ -355,10 +332,8 @@ int sqti(long double mnm,int one,int two){
                             cout<< "                 --> of section /2 " << std::setprecision(preci)<<section_h_dia_dio <<"\n";
                             cout<<"\n";
                             }
-
     check_sqrt(mnm,epi_dio,dia_dio,section_temp,section_h,section_h_epi_dio,section_h_dia_dio,dia_dio_dio,dia_dio_four);
-
-                            }
+        }
     }
     show_xl();
     show_xpl();
@@ -369,14 +344,10 @@ int sqti(long double mnm,int one,int two){
    return 0;
 }
 
-
-
 int main(int argc,char** argv)
 {
-
     cout<<"voyeristic behaviours and others have fun \n";
     cout<<"ur number ,ur precision , ur sleep time , ur log  \n";
-
     mynmb=stold(argv[1]);
     preci=stoi(argv[2]);
     st_th=stoi(argv[3]);
@@ -385,15 +356,13 @@ int main(int argc,char** argv)
     int ar_two[4]={9,26,35,17};
     int ar_three[4]={10,25,35,15};
     int ar_four[4]={10,26,36,16};
-
-
     get_the_sum *gti=new get_the_sum();
-    cdis[cs]=gti->get_da_number(mynmb);
+    cdis[cs]=gti->get_da_number(mynmb,1);
     cout<<"Main cdi " << cdis[cs] <<"\n";
     if(cdis[cs]>9){
        while(cdis[cs]>9){
             cs+=1;
-            cdis[cs]=gti->get_da_number(cdis[cs-1]);
+            cdis[cs]=gti->get_da_number(cdis[cs-1],1);
             cout<<"Secondary cdi " << cdis[cs] <<"\n";
             if(cdis[cs]<=9){
                 cout<<"Exiting Secondary cdi " << cdis[cs] <<"\n";
@@ -401,55 +370,98 @@ int main(int argc,char** argv)
             }
        }
     }
-
     sqrti=sqrt(mynmb);
     cout<<"with sqrt of math " <<std::setprecision(preci)<< sqrti <<"\n";
-
     cout<<"\n";
-    cout<<"9 25 |34 16| " << sqrti <<"  and main " << mynmb <<"\n";
+    cout<<"9 25 |34 16| " <<std::setprecision(preci)<< sqrti <<"  and main " <<std::setprecision(preci)<< mynmb <<"\n";
     sqti(mynmb,34,16);
     std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
     cout<<"\n";
     rt=0;
-    cout<<"9 |25| 34 |16| " << sqrti <<"  and main " << mynmb <<"\n";
+    cout<<"9 |25| 34 |16| " <<std::setprecision(preci)<< sqrti <<"  and main " <<std::setprecision(preci)<< mynmb <<"\n";
     sqti(mynmb,25,16);
     std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
     cout<<"\n";
     rt=0;
-    cout<<"9 26 |35 17| " << sqrti <<"  and main " << mynmb <<"\n";
+    cout<<"9 26 |35 17| " <<std::setprecision(preci)<< sqrti <<"  and main " <<std::setprecision(preci)<< mynmb <<"\n";
     sqti(mynmb,35,17);
     std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
     cout<<"\n";
     rt=0;
-    cout<<"9 |26| 35 |17| " << sqrti <<"  and main " << mynmb <<"\n";
+    cout<<"9 |26| 35 |17| " <<std::setprecision(preci)<< sqrti <<"  and main " <<std::setprecision(preci)<< mynmb <<"\n";
     sqti(mynmb,26,17);
     std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
     cout<<"\n";
     rt=0;
-    cout<<"10 25 |35 15| " << sqrti <<"  and main " << mynmb <<"\n";
+    cout<<"10 25 |35 15| " <<std::setprecision(preci)<< sqrti <<"  and main " <<std::setprecision(preci)<< mynmb <<"\n";
     sqti(mynmb,35,15);
     std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
     cout<<"\n";
     rt=0;
-    cout<<"10 |25| 35 |15| " << sqrti <<"  and main " << mynmb <<"\n";
+    cout<<"10 |25| 35 |15| " <<std::setprecision(preci)<< sqrti <<"  and main " << std::setprecision(preci)<<mynmb <<"\n";
     sqti(mynmb,25,15);
     cout<<"\n";
     rt=0;
-    cout<<"10 26 |36 16| " << sqrti <<"  and main " << mynmb <<"\n";
+    cout<<"10 26 |36 16| " <<std::setprecision(preci)<< sqrti <<"  and main " <<std::setprecision(preci)<< mynmb <<"\n";
     sqti(mynmb,36,16);
     std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
     cout<<"\n";
     rt=0;
-    cout<<"10 |26| 36 |16| " << sqrti <<"  and main " << mynmb <<"\n";
+    cout<<"10 |26| 36 |16| " <<std::setprecision(preci)<< sqrti <<"  and main " <<std::setprecision(preci)<< mynmb <<"\n";
     sqti(mynmb,26,16);
     std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
     cout<<"\n";
     rt=0;
     cout<<"\n";
     for(int m=0;m<=lvec.size()-1;m++){
-       cout<<lvec[m] <<"\n";
+       cout<<std::setprecision(preci)<<lvec[m] <<"\n";
     }
 
+
+    long double lt_main;
+    long double lt;
+    cout<<"\n";
+    cout<<"enter a number from above \n";
+    cin>>lt_main;
+    cout<<"lenght of " <<std::setprecision(preci)<< lt_main <<" " ;
+    lt=gti->get_da_number(lt_main,2);
+    int k=gti->gt_leng;
+    cout<<std::setprecision(preci)<< k <<"\n";
+    part_of *prt=new part_of();
+    long double abqr;
+    int psif=1;
+    for(;;){
+    //cout<<"enter psifia arithmo \n";
+    //cin>>psif;
+        cout<<"-------------------------------------------------------\n";
+        prt->get_the_part(lt_main,psif-1);
+        abqr=prt->qrt;
+        part_of *ptr=new part_of();
+        long double baqr;
+        ptr->get_the_part(mynmb,psif-1);
+        baqr=ptr->qrt;
+        cout<<std::setprecision(preci)<<ptr->rtv << " " <<std::setprecision(preci)<< prt->rtv <<"\n";
+        cout<<"main " <<std::setprecision(preci)<< baqr << " second " <<std::setprecision(preci)<< abqr <<"\n";
+        long double ab,ba;
+        ab=baqr*baqr;
+        ba=abqr*abqr;
+        cout<<"main " <<std::setprecision(preci)<< ab << " second " <<std::setprecision(preci)<< ba <<"\n";
+        long double ldb;
+        ldb=(long double)baqr/(long double)ba;
+        int by_one;
+        cout<<"times of " <<std::setprecision(preci)<< ldb <<"\n";
+        cout<<"enter 10 100 1000\n";
+        cin>>by_one;
+        ldb=ldb*by_one;
+        cout<<"new times of " <<std::setprecision(preci)<< ldb <<"\n";
+        long double adb;
+        adb=lt_main*ldb;
+        cout<<"using " << std::setprecision(preci)<<lt_main << " * " << std::setprecision(preci)<<ldb <<"\n";
+        cout<<std::setprecision(preci)<<adb<<"\n";
+        psif+=1;
+        if(psif==5){break;}
+        cout<<"-------------------------------------------------------\n";
+    }
 
     return 0;
 }

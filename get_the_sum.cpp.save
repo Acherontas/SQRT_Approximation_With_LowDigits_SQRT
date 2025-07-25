@@ -1,6 +1,5 @@
 #include "get_the_sum.h"
 #include <string.h>
-#include <math.h>
 #include <iostream>
 using namespace std;
 get_the_sum::get_the_sum()
@@ -26,7 +25,7 @@ get_the_sum& get_the_sum::operator=(const get_the_sum& rhs)
 }
 
 
-long double get_the_sum::get_da_number(long double nmbi,int st){
+long double get_the_sum::get_da_number(long double nmbi){
 
      string jk;
      jk.clear();
@@ -36,24 +35,14 @@ long double get_the_sum::get_da_number(long double nmbi,int st){
      int lk=0;
      long double smbi=0;
      int lgt=0;
-     string ltg;
-     ltg.clear();
      for(int i=0;i<=jk.size()-1;i++){
         mk=jk.at(i);
-        if(st==2){
-                 lgt+=1;
-        }
+        lgt
         if(mk=='.'){
         //cout<<"exiting with " << smbi <<"\n";
-            if(st==2){
-                    this->gt_leng=lgt-1;
-                     }
-          break;
-        }
-        if(st==1){
-                    lk=stoi(&mk);
-                     smbi+=lk;
-                 }
+         break;}
+        lk=stoi(&mk);
+        smbi+=lk;
      }
 
     return smbi;
