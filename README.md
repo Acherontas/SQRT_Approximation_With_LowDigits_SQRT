@@ -1,4 +1,4 @@
-# SQRT_Approximation_Wit_Any_SQR
+# SQRT_Approximation_With_Any_SQR
 an approximation of sqrt
 it uses the cdis and some /2 *2 and /10 
 but it works 
