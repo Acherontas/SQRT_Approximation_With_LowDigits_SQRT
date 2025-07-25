@@ -24,6 +24,8 @@ using namespace std;
     vector<long double> xl;
     vector<long double> lx;
     vector<long double> xpl;
+    vector<string> lvec;
+    string vecl;
     long double dif;
     long double xlip;
     int st_th;
@@ -33,6 +35,8 @@ using namespace std;
     long double ckxlip;
     long double ckep,ckdd,ckddd,ckddf;
     long double cksh,ckshep,ckshdd;
+
+    long double x_dv;
 void check_sqrt(long double mani,long double ep,long double dd,long double st,long double sh,long double shep,long double shdd,long double ddd,long double ddf)
 {
     fractpart=modf(ep,&intpart);
@@ -138,7 +142,10 @@ void show_xl(){
   for(auto it=0;it<=xl.size()-1;it++)
   {
     dif=mynmb-xl[it];
-    cout<<  " of " <<std::setprecision(preci)<< lx[it] << " ^2 ::== " << xl[it] <<"  diafora " << dif <<"\n";
+    if(v_log==1){
+            x_dv=lx[it]*lx[it];
+            cout<<  " of " <<std::setprecision(preci)<< lx[it] << " ^2 ::== " <<std::setprecision(preci)<< x_dv << " as intpart " <<std::setprecision(preci)<< xl[it] <<"  diafora " <<std::setprecision(preci) << dif << " from " << std::setprecision(preci) << mynmb <<"\n";
+                }
     xpl.push_back(dif);
     //xli+=1;
     //if(xli%2==0){cout<<"\n";}
@@ -149,9 +156,29 @@ void show_xpl(){
   int olp=0;
   stable_sort(xpl.begin(),xpl.end());
   long double mlp;
+
   for(auto i=0;i<=xpl.size()-1;i++){
      //cout<<xpl[i] <<" ";
-     if(xpl[0]+xl[i]==mynmb){cout<<"da value " << std::setprecision(preci)<<lx[i] <<" ^2 " << xl[i] <<" diafora " << xpl[0] <<"\n";}
+     if(xpl[0]+xl[i]==mynmb){
+                x_dv=lx[i]*lx[i];
+                vecl.clear();
+                if(v_log==1){cout<<  " of " <<std::setprecision(preci)<< lx[i] << " ^2 ::== " <<std::setprecision(preci)<< x_dv << " as intpart " <<std::                setprecision(preci)<< xl[i] <<"  diafora " <<std::setprecision(preci) << xpl[0] << " from " << std::setprecision(preci) <<                mynmb <<"\n";
+                }
+                //cout<<"da value " << std::setprecision(preci)<<lx[i] <<" ^2 " << xl[i] <<" diafora " << xpl[0] <<"\n";
+                vecl+=" ";
+                vecl+=to_string(lx[i]);
+                vecl+=" ^2 ::== ";
+                vecl+=to_string(x_dv);
+                vecl+=" as intpart ";
+                vecl+=to_string(xl[i]);
+                vecl+=" diafora ";
+                vecl+=to_string(xpl[0]);
+                vecl+=" from ";
+                vecl+=to_string(mynmb);
+                vecl+=" ";
+                lvec.push_back(vecl);
+
+                }
      olp+=1;
   }
  cout<<"\n";
@@ -350,7 +377,7 @@ int main(int argc,char** argv)
     cout<<"voyeristic behaviours and others have fun \n";
     cout<<"ur number ,ur precision , ur sleep time , ur log  \n";
 
-    mynmb=stoll(argv[1]);
+    mynmb=stold(argv[1]);
     preci=stoi(argv[2]);
     st_th=stoi(argv[3]);
     v_log=stoi(argv[4]);
@@ -419,6 +446,9 @@ int main(int argc,char** argv)
     cout<<"\n";
     rt=0;
     cout<<"\n";
+    for(int m=0;m<=lvec.size()-1;m++){
+       cout<<lvec[m] <<"\n";
+    }
 
 
     return 0;

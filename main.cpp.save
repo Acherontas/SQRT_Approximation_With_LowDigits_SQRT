@@ -23,7 +23,9 @@ using namespace std;
     long double dia_dio_four;
     vector<long double> xl;
     vector<long double> lx;
-    vector<int> xpl;
+    vector<long double> xpl;
+    vector<string> lvec;
+    string vecl;
     long double dif;
     long double xlip;
     int st_th;
@@ -33,6 +35,8 @@ using namespace std;
     long double ckxlip;
     long double ckep,ckdd,ckddd,ckddf;
     long double cksh,ckshep,ckshdd;
+
+    long double x_dv;
 void check_sqrt(long double mani,long double ep,long double dd,long double st,long double sh,long double shep,long double shdd,long double ddd,long double ddf)
 {
     fractpart=modf(ep,&intpart);
@@ -70,7 +74,7 @@ void check_sqrt(long double mani,long double ep,long double dd,long double st,lo
              if(ckep<=mani){xl.push_back(ckep);lx.push_back(dd);break;}
         }
     }
-    
+
     if(ckdd<=mani){xl.push_back(ckdd);lx.push_back(st);}
     if(ckdd>mani){
        while(ckdd>mani){
@@ -80,7 +84,7 @@ void check_sqrt(long double mani,long double ep,long double dd,long double st,lo
              if(ckdd<=mani){xl.push_back(ckdd);lx.push_back(st);break;}
         }
     }
-    
+
     if(ckddd<=mani){xl.push_back(ckddd);lx.push_back(sh);}
     if(ckddd>mani){
        while(ckddd>mani){
@@ -89,15 +93,48 @@ void check_sqrt(long double mani,long double ep,long double dd,long double st,lo
              ckddd=intpart*intpart;
              if(ckddd<=mani){xl.push_back(ckddd);lx.push_back(sh);break;}
         }
-    
     }
-    
-    
-    
+
     if(ckddf<=mani){xl.push_back(ckddf);lx.push_back(shep);}
+    if(ckddf>mani){
+      while(ckddf>mani){
+             shep=shep/10;
+             fractpart=modf(shep,&intpart);
+             ckddf=intpart*intpart;
+             if(ckddf<=mani){xl.push_back(ckddf);lx.push_back(shep);break;}
+        }
+    }
+
+
     if(cksh<=mani){xl.push_back(cksh);lx.push_back(shdd);}
+    if(cksh>mani){
+        while(cksh>mani){
+             shdd=shdd/10;
+             fractpart=modf(shdd,&intpart);
+             cksh=intpart*intpart;
+             if(cksh<=mani){xl.push_back(cksh);lx.push_back(shdd);break;}
+        }
+    }
+
     if(ckshep<=mani){xl.push_back(ckshep);lx.push_back(ddd);}
+    if(ckshep>mani){
+      while(ckshep>mani){
+             ddd=dd/10;
+             fractpart=modf(ddd,&intpart);
+             ckshep=intpart*intpart;
+             if(ckshep<=mani){xl.push_back(ckshep);lx.push_back(dd);break;}
+        }
+    }
+
     if(ckshdd<=mani){xl.push_back(ckshdd);lx.push_back(ddf);}
+    if(ckshdd>mani){
+       while(ckshdd>mani){
+             ddf=ddf/10;
+             fractpart=modf(ddf,&intpart);
+             ckshdd=intpart*intpart;
+             if(ckshdd<=mani){xl.push_back(ckshdd);lx.push_back(ddf);break;}
+        }
+    }
 }
 
 void show_xl(){
@@ -105,7 +142,10 @@ void show_xl(){
   for(auto it=0;it<=xl.size()-1;it++)
   {
     dif=mynmb-xl[it];
-    cout<<  " of " <<std::setprecision(preci)<< lx[it] << " ^2 ::== " << xl[it] <<"  diafora " << dif <<"\n";
+    if(v_log==1){
+            x_dv=lx[it]*lx[it];
+            cout<<  " of " <<std::setprecision(preci)<< lx[it] << " ^2 ::== " <<std::setprecision(preci)<< x_dv << " as intpart " <<std::setprecision(preci)<< xl[it] <<"  diafora " <<std::setprecision(preci) << dif << " from " << std::setprecision(preci) << mynmb <<"\n";
+                }
     xpl.push_back(dif);
     //xli+=1;
     //if(xli%2==0){cout<<"\n";}
@@ -116,9 +156,28 @@ void show_xpl(){
   int olp=0;
   stable_sort(xpl.begin(),xpl.end());
   long double mlp;
+  vecl.clear();
   for(auto i=0;i<=xpl.size()-1;i++){
      //cout<<xpl[i] <<" ";
-     if(xpl[0]+xl[i]==mynmb){cout<<"da value " << std::setprecision(preci)<<lx[i] <<" ^2 " << xl[i] <<" diafora " << xpl[0] <<"\n";}
+     if(xpl[0]+xl[i]==mynmb){
+                x_dv=lx[i]*lx[i];
+                
+                if(v_log==1){cout<<  " of " <<std::setprecision(preci)<< lx[i] << " ^2 ::== " <<std::setprecision(preci)<< x_dv << " as intpart " <<std::                setprecision(preci)<< xl[i] <<"  diafora " <<std::setprecision(preci) << xpl[0] << " from " << std::setprecision(preci) <<                mynmb <<"\n";
+                }
+                //cout<<"da value " << std::setprecision(preci)<<lx[i] <<" ^2 " << xl[i] <<" diafora " << xpl[0] <<"\n";
+                
+                vecl+=to_string(lx[i]);
+                vecl+=" ^2 ::== ";
+                vecl+=to_string(x_dv);
+                vecl+=" as intpart ";
+                vecl+=to_string(xl[i]);
+                vecl+=" diafora ";
+                vecl+=to_string(xpl[0]);
+                vecl+=" from ";
+                vecl+=to_string(mynmb);
+                lvec.push_back(vecl);
+                
+                }
      olp+=1;
   }
  cout<<"\n";
@@ -386,6 +445,9 @@ int main(int argc,char** argv)
     cout<<"\n";
     rt=0;
     cout<<"\n";
+    for(int m=0;m<=vecl.size();m++){
+       co
+    }
 
 
     return 0;
