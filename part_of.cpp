@@ -35,7 +35,7 @@ long double part_of::get_the_part(long double nbm,int till,int prc){
      int tmp_till;
      tmp_till=till;
      int pd;
-     if(till==3){tmp_till=sk.size()-1;}
+     if(till==-1){tmp_till=sk.size()-1;}
      //cout<<"using " << sk << " with " << tmp_till <<"\n";
      for(int i=0;i<=tmp_till;i++){
           ck=sk.at(i);
@@ -44,10 +44,10 @@ long double part_of::get_the_part(long double nbm,int till,int prc){
                         this->rvt+=to_string(lk);
                      }
 
-          if(till!=3){
+          if(till!=-1){
                 if(ck=='.'){break;}
           }
-          if(till==3){
+          if(till==-1){
               if(ck=='.'){pd=all_pos;}
           }
         all_pos+=1;
