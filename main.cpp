@@ -495,11 +495,47 @@ int main(int argc,char** argv)
         long double t_ten=10;
         long double t_rst;
         cout<<"\n";
-        cout<<"    -----------------> " << std::setprecision(preci)<<adb<<"\n";
-        for(int i=0;i<=lap;i++){
-            t_rst=adb*t_ten;
-            cout<<"    -----------------> " << std::setprecision(preci)<<t_rst<<"\n";
-            t_ten=t_ten*10;
+        long double rst_f;
+        long double frc,intprt;
+        rst_f=adb*adb;
+        int xstp=0;
+        fractpart=modf(mynmb,&intpart);
+        cout<<"trying to reach the main number " << std::setprecision(preci)<<mynmb <<" ";
+        cout<<" fract " <<std::setprecision(preci)<<fractpart << " int " << std::setprecision(preci)<<intpart<<"\n";
+        cout<<"    -----------------> " << std::setprecision(preci)<<adb<<" ^2 ::== " <<std::setprecision(preci)<< rst_f <<"\n";
+        frc=modf(rst_f,&intprt);
+        cout<<"temp fract "<< std::setprecision(preci)<< frc << " temp int " << std::setprecision(preci)<<intprt<<"\n";
+        if(rst_f==mynmb)
+        {
+          cout<<"power of 2 for "<< std::setprecision(preci)<<mynmb << " is " << std::setprecision(preci)<<rst_f <<"\n";
+          xstp=1;
+        }
+        if(intpart==intprt)
+        {
+          cout<<"closest power of 2 for "<< std::setprecision(preci)<<mynmb << " is " << std::setprecision(preci)<<rst_f <<"\n";
+          xstp=2;
+        }
+        cout<<"before loop xstp is " << xstp <<"\n";
+        if(xstp==0){
+            for(int i=0;i<=lap;i++){
+                t_rst=adb*t_ten;
+                rst_f=t_rst*t_rst;
+                cout<<"    -----------------> " << std::setprecision(preci)<<t_rst<<" ^2 ::== " << std::setprecision(preci)<<rst_f<<"\n";
+                frc=modf(rst_f,&intprt);
+                if(rst_f==mynmb)
+                {
+                    cout<<"power of 2 for "<< std::setprecision(preci)<<mynmb << " is " << std::setprecision(preci)<<rst_f <<"\n";
+                    cout<<"temp fract "<< std::setprecision(preci)<< frc << " temp int " << std::setprecision(preci)<<intprt<<"\n";
+                    xstp=1;
+                }
+                if(intpart==intprt)
+                {
+                    cout<<"closest power of 2 for "<< std::setprecision(preci)<<mynmb << " is " << std::setprecision(preci)<<rst_f <<"\n";
+                    xstp=2;
+                }
+                t_ten=t_ten*10;
+                if(xstp!=0){break;}
+            }
         }
         cout<<"\n";
         psif+=1;
