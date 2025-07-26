@@ -487,7 +487,7 @@ int main(int argc,char** argv)
         adb=lt_main*ldb;
         cout<<"using " << std::setprecision(preci)<<lt_main << " * " << std::setprecision(preci)<<ldb <<"\n";
         cout<<std::setprecision(preci)<<adb<<" ";
-        ptr->get_the_part(adb,3,preci);
+        ptr->get_the_part(adb,-1,preci);
         int ad=ptr->all_length;
         int pd=ptr->dot_pos;
         int lap=(ad-1)-pd;
