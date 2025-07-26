@@ -26,12 +26,16 @@ get_the_sum& get_the_sum::operator=(const get_the_sum& rhs)
 }
 
 
-long double get_the_sum::get_da_number(long double nmbi,int st){
+long double get_the_sum::get_da_number(long double nmbi,int st,int prc){
 
      string jk;
      jk.clear();
-     jk+=to_string(nmbi);
+     //jk+=to_string(nmbi);
      //cout<<"using " << jk << " with " << nmbi <<"\n";
+     stringstream mjk;
+     mjk<<std::setprecision(prc)<<nmbi;
+     jk+=mjk.str();
+     //cout<<"using get da number of " << jk <<"\n";
      char mk;
      int lk=0;
      long double smbi=0;
@@ -45,15 +49,16 @@ long double get_the_sum::get_da_number(long double nmbi,int st){
         }
         if(mk=='.'){
         //cout<<"exiting with " << smbi <<"\n";
-            if(st==2){
-                    this->gt_leng=lgt-1;
-                     }
+            //if(st==2){
+                         this->gt_leng=lgt;//-1
+                //     }
           break;
         }
         if(st==1){
                     lk=stoi(&mk);
-                     smbi+=lk;
+                    smbi+=lk;
                  }
+        this->gt_leng=lgt;//-1
      }
 
     return smbi;

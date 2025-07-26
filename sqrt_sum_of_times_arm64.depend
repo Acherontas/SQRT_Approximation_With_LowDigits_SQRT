@@ -1,20 +1,26 @@
 # depslib dependency file v1.0
-1753431688 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/get_the_sum.cpp
+1753513532 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/get_the_sum.cpp
 	"get_the_sum.h"
 	<string.h>
 	<math.h>
 	<iostream>
 
-1753431699 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/get_the_sum.h
+1753513156 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/get_the_sum.h
 	<string.h>
+	<string>
+	<math.h>
+	<string>
+	<sstream>
 	<iostream>
+	<iomanip>
 
-1753432729 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/main.cpp
+1753513188 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/main.cpp
 	<iostream>
 	<math.h>
 	<iomanip>
 	"get_the_sum.h"
 	"after_the_dot.h"
+	"part_of.h"
 	<vector>
 	<thread>
 	<bits/stdc++.h>
@@ -26,10 +32,14 @@
 	<string.h>
 	<iostream>
 
-1753432850 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/part_of.cpp
+1753513760 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/part_of.cpp
 	"part_of.h"
 
-1753432841 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/part_of.h
+1753513760 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/part_of.h
 	<string>
 	<math.h>
+	<string>
+	<sstream>
+	<iostream>
+	<iomanip>
 

@@ -23,16 +23,32 @@ part_of& part_of::operator=(const part_of& rhs)
 }
 
 
-long double part_of::get_the_part(long double nbm,int till){
+long double part_of::get_the_part(long double nbm,int till,int prc){
      string sk;
      sk.clear();
-     sk+=to_string(nbm);
-     char ck; int kl;
-     for(int i=0;i<=till;i++){
+     this->rvt.clear();
+     stringstream ms;
+     ms<<std::setprecision(pr)<<nbm;
+     sk+=ms.str();
+     char ck; int lk;
+     int all_pos;
+     int tmp_till;
+     tmp_till=till;
+     if(till==3){tmp_till=sk.size()-1;}
+     cout<<"using " << sk << " with " << tmp_till <<"\n";
+     for(int i=0;i<=tmp_till;i++){
           ck=sk.at(i);
-          lk=stoi(&ck);
-     
+          if(ck!='.'){
+                        lk=stoi(&ck);
+                        this->rvt+=to_string(lk);
+                     }
+
+          if(till!=3){
+                if(ck=='.'){break;}
+          }
+        all_pos+=1;
      }
-
-
+     this->rtv=stold(this->rvt);
+     this->qrt=sqrt(this->rtv);
+     this->all_length=all_pos;
 }

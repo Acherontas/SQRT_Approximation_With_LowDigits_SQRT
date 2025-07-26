@@ -2,6 +2,10 @@
 #define PART_OF_H
 #include <string>
 #include <math.h>
+#include <string>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
 using namespace std;
 
 class part_of
@@ -14,7 +18,9 @@ class part_of
         long double rtv;
         string rvt;
         long double qrt;
-        long double get_the_part(long double nbm,int till);
+        int all_length;
+        int dot_pos;
+        long double get_the_part(long double nbm,int till,int prc);
 
     protected:
 

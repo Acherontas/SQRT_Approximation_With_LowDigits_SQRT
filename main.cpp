@@ -25,6 +25,7 @@ using namespace std;
     vector<long double> xl;
     vector<long double> lx;
     vector<long double> xpl;
+    vector<long double> fnl_weirdo;
     vector<string> lvec;
     string vecl;
     long double dif;
@@ -143,6 +144,15 @@ void show_xl(){
   }
 }
 
+void show_fnl_weirdo(){
+    cout<<"\n";
+    stable_sort(fnl_weirdo.begin(),fnl_weirdo.end());
+    for(auto i=fnl_weirdo.size()-1;i>0;i--){
+      cout<<" " << fnl_weirdo[i] << " " ;
+    }
+   cout<<"\n";
+}
+
 void show_xpl(){
   int olp=0;
   stable_sort(xpl.begin(),xpl.end());
@@ -167,6 +177,8 @@ void show_xpl(){
                 vecl+=to_string(mynmb);
                 vecl+=" ";
                 lvec.push_back(vecl);
+                fractpart=modf(lx[i],&intpart);
+                fnl_weirdo.push_back(intpart);
                 }
      olp+=1;
   }
@@ -357,12 +369,12 @@ int main(int argc,char** argv)
     int ar_three[4]={10,25,35,15};
     int ar_four[4]={10,26,36,16};
     get_the_sum *gti=new get_the_sum();
-    cdis[cs]=gti->get_da_number(mynmb,1);
+    cdis[cs]=gti->get_da_number(mynmb,1,preci);
     cout<<"Main cdi " << cdis[cs] <<"\n";
     if(cdis[cs]>9){
        while(cdis[cs]>9){
             cs+=1;
-            cdis[cs]=gti->get_da_number(cdis[cs-1],1);
+            cdis[cs]=gti->get_da_number(cdis[cs-1],1,preci);
             cout<<"Secondary cdi " << cdis[cs] <<"\n";
             if(cdis[cs]<=9){
                 cout<<"Exiting Secondary cdi " << cdis[cs] <<"\n";
@@ -413,41 +425,43 @@ int main(int argc,char** argv)
     cout<<"\n";
     rt=0;
     cout<<"\n";
-    for(int m=0;m<=lvec.size()-1;m++){
-       cout<<std::setprecision(preci)<<lvec[m] <<"\n";
+    if(v_log==1){
+        for(int m=0;m<=lvec.size()-1;m++){
+                cout<<std::setprecision(preci)<<lvec[m] <<"\n";
+        }
     }
-
-
+    cout<<"\n";
+    cout<<"---------order of near approximation numbers--------\n";
+    cout<<"|----------bigger value is the nearest-------------|\n";
+    show_fnl_weirdo();
+    cout<<"----------------------------------------------------\n";
     long double lt_main;
     long double lt;
     cout<<"\n";
     cout<<"enter a number from above \n";
     cin>>lt_main;
     cout<<"lenght of " <<std::setprecision(preci)<< lt_main <<" " ;
-    lt=gti->get_da_number(lt_main,2);
+    lt=gti->get_da_number(lt_main,2,preci);
     int k=gti->gt_leng;
     cout<<std::setprecision(preci)<< k <<"\n";
-
-    lt=gti->get_da_number(mynmb,2);
+    lt=gti->get_da_number(mynmb,2,preci);
     int l=gti->gt_leng;
     cout<<"lenght of " <<std::setprecision(preci) << mynmb <<  " is " << std::setprecision(preci) << l <<"\n";
-
     part_of *prt=new part_of();
     long double abqr;
     int psif=1;
     int ps_ask;
     cout<<"default 4 loops enter 4 or more [4 is 3] \n";
+    cout<<"suggested value : " << k+1 <<"\n";
     cin>>ps_ask;
     for(;;){
-    //cout<<"enter psifia arithmo \n";
-    //cin>>psif;
         cout<<"-------------------------------------------------------\n";
         cout<<"times " << psif <<" ";
-        prt->get_the_part(lt_main,psif-1);
+        prt->get_the_part(lt_main,psif-1,preci);
         abqr=prt->qrt;
         part_of *ptr=new part_of();
         long double baqr;
-        ptr->get_the_part(mynmb,psif-1);
+        ptr->get_the_part(mynmb,psif-1,preci);
         baqr=ptr->qrt;
         cout<<std::setprecision(preci)<<ptr->rtv << " " <<std::setprecision(preci)<< prt->rtv <<"\n";
         cout<<"main " <<std::setprecision(preci)<< baqr << " second " <<std::setprecision(preci)<< abqr <<"\n";
@@ -459,22 +473,30 @@ int main(int argc,char** argv)
         ldb=(long double)baqr/(long double)ba;
         int by_one;
         cout<<"times of " <<std::setprecision(preci)<< ldb <<"\n";
-        //cout<<"enter 10 100 1000\n";
-        //cin>>by_one;
-        //ldb=ldb*by_one;
         cout<<"new times of " <<std::setprecision(preci)<< ldb <<"\n";
         long double adb;
         adb=lt_main*ldb;
         cout<<"using " << std::setprecision(preci)<<lt_main << " * " << std::setprecision(preci)<<ldb <<"\n";
         cout<<std::setprecision(preci)<<adb<<" ";
-        cout<<std::setprecision(preci)<<adb*10<<" ";
-        cout<<std::setprecision(preci)<<adb*100<<" ";
-        cout<<std::setprecision(preci)<<adb*1000<<"\n";
+        ptr->get_the_part(adb,3,preci);
+        int ad=ptr->all_length;
+        int pd=ptr->dot_pos;
+        int lap=(ad-1)-pd;
+        cout<<" with length of " << ad-1 <<" and dot length "<< pd <<" will move " << lap <<"\n" ;
+        long double t_ten=10;
+        long double t_rst;
+        cout<<"\n";
+        cout<<"    -----------------> " << std::setprecision(preci)<<adb<<"\n";
+        for(int i=0;i<=lap;i++){
+            t_rst=adb*t_ten;
+            cout<<"    -----------------> " << std::setprecision(preci)<<t_rst<<"\n";
+            t_ten=t_ten*10;
+        }
+        cout<<"\n";
         psif+=1;
         std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
         if(psif==ps_ask){break;}
         cout<<"-------------------------------------------------------\n";
     }
-
     return 0;
 }
