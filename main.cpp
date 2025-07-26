@@ -7,6 +7,9 @@
 #include <vector>
 #include <thread>
 #include <bits/stdc++.h>
+#include <limits>
+#include <cfloat>
+#include <cmath>
 using namespace std;
 
     long double mynmb;
@@ -37,8 +40,14 @@ using namespace std;
     long double cksh,ckshep,ckshdd;
     long double x_dv;
 
-void check_sqrt(long double mani,long double ep,long double dd,long double st,long double sh,long double shep,long double shdd,long double ddd,long double ddf)
+int check_sqrt(long double mani,long double ep,long double dd,long double st,long double sh,long double shep,long double shdd,long double ddd,long double ddf)
 {
+  if(isinf(mani) || isinf(ep) || isinf(dd) || isinf(st) || isinf(sh) || isinf(shep) || isinf(shdd) || isinf(ddd) || isinf(ddf))
+  {
+                cout<<"error continue with the rest \n";
+                return 0;
+  }
+
     fractpart=modf(ep,&intpart);
     ckxlip=intpart*intpart;
     fractpart=modf(dd,&intpart);

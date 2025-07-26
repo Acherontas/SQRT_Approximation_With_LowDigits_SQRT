@@ -14,7 +14,7 @@
 	<iostream>
 	<iomanip>
 
-1753513188 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/main.cpp
+1753520503 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/main.cpp
 	<iostream>
 	<math.h>
 	<iomanip>
@@ -24,6 +24,9 @@
 	<vector>
 	<thread>
 	<bits/stdc++.h>
+	<limits>
+	<cfloat>
+	<cmath>
 
 1753377268 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/after_the_dot.cpp
 	"after_the_dot.h"

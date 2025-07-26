@@ -39,6 +39,9 @@ using namespace std;
 
 void check_sqrt(long double mani,long double ep,long double dd,long double st,long double sh,long double shep,long double shdd,long double ddd,long double ddf)
 {
+  cout<<"entering check_sqrt \n"
+  if(mani<0 || ep<0 || dd<0 || st<0 || sh<0 || shep<0 || shdd<0 || ddd<0 || ddf<0){goto A;}
+
     fractpart=modf(ep,&intpart);
     ckxlip=intpart*intpart;
     fractpart=modf(dd,&intpart);
@@ -127,6 +130,8 @@ void check_sqrt(long double mani,long double ep,long double dd,long double st,lo
              if(ckshdd<=mani){xl.push_back(ckshdd);lx.push_back(ddf);break;}
         }
     }
+    A:
+    cout<<"error continue with the rest \n";
 }
 
 void show_xl(){
@@ -148,7 +153,7 @@ void show_fnl_weirdo(){
     cout<<"\n";
     stable_sort(fnl_weirdo.begin(),fnl_weirdo.end());
     for(auto i=fnl_weirdo.size()-1;i>0;i--){
-      cout<<fnl_weirdo[i] << " " ;
+      cout<<" " << fnl_weirdo[i] << " " ;
     }
    cout<<"\n";
 }
@@ -425,16 +430,16 @@ int main(int argc,char** argv)
     cout<<"\n";
     rt=0;
     cout<<"\n";
-    for(int m=0;m<=lvec.size()-1;m++){
-       cout<<std::setprecision(preci)<<lvec[m] <<"\n";
+    if(v_log==1){
+        for(int m=0;m<=lvec.size()-1;m++){
+                cout<<std::setprecision(preci)<<lvec[m] <<"\n";
+        }
     }
     cout<<"\n";
     cout<<"---------order of near approximation numbers--------\n";
     cout<<"|----------bigger value is the nearest-------------|\n";
     show_fnl_weirdo();
     cout<<"----------------------------------------------------\n";
-
-
     long double lt_main;
     long double lt;
     cout<<"\n";
@@ -444,11 +449,9 @@ int main(int argc,char** argv)
     lt=gti->get_da_number(lt_main,2,preci);
     int k=gti->gt_leng;
     cout<<std::setprecision(preci)<< k <<"\n";
-
     lt=gti->get_da_number(mynmb,2,preci);
     int l=gti->gt_leng;
     cout<<"lenght of " <<std::setprecision(preci) << mynmb <<  " is " << std::setprecision(preci) << l <<"\n";
-
     part_of *prt=new part_of();
     long double abqr;
     int psif=1;
@@ -457,8 +460,6 @@ int main(int argc,char** argv)
     cout<<"suggested value : " << k+1 <<"\n";
     cin>>ps_ask;
     for(;;){
-    //cout<<"enter psifia arithmo \n";
-    //cin>>psif;
         cout<<"-------------------------------------------------------\n";
         cout<<"times " << psif <<" ";
         prt->get_the_part(lt_main,psif-1,preci);
@@ -482,30 +483,25 @@ int main(int argc,char** argv)
         adb=lt_main*ldb;
         cout<<"using " << std::setprecision(preci)<<lt_main << " * " << std::setprecision(preci)<<ldb <<"\n";
         cout<<std::setprecision(preci)<<adb<<" ";
-
         ptr->get_the_part(adb,3,preci);
         int ad=ptr->all_length;
         int pd=ptr->dot_pos;
         int lap=(ad-1)-pd;
         cout<<" with length of " << ad-1 <<" and dot length "<< pd <<" will move " << lap <<"\n" ;
-        
         long double t_ten=10;
         long double t_rst;
+        cout<<"\n";
+        cout<<"    -----------------> " << std::setprecision(preci)<<adb<<"\n";
         for(int i=0;i<=lap;i++){
-            t_rst=adb*t_te
-            cout<<std::setprecision(preci)<<adb*10<<" ";
-        
+            t_rst=adb*t_ten;
+            cout<<"    -----------------> " << std::setprecision(preci)<<t_rst<<"\n";
+            t_ten=t_ten*10;
         }
-
-
-        
-        cout<<std::setprecision(preci)<<adb*100<<" ";
-        cout<<std::setprecision(preci)<<adb*1000<<"\n";
+        cout<<"\n";
         psif+=1;
         std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
         if(psif==ps_ask){break;}
         cout<<"-------------------------------------------------------\n";
     }
-
     return 0;
 }
