@@ -379,6 +379,7 @@ void show_vcc(long double entered){
   tmp_min=afr;
   long double tmp_vl;
   tmp_vl=entered;
+  int ent=0;
   for(auto ito=0;ito<=v_cc.size()-1;ito+=1)
   {
      xlk=v_cc[ito]*v_cc[ito];
@@ -400,14 +401,16 @@ void show_vcc(long double entered){
      tmp_vl=tmp_vl+1;
      xlk=tmp_vl*tmp_vl;
      cout<<"possible approximation of addition ::== " << tmp_vl <<" with " << xlk <<"\n";
-     if(xlk>mynmb){break;}
+     if(xlk>mynmb){ent+=1;break;}
   }
+  if(ent==0){
   cout<<"----removing \n";
   while(xlk>mynmb){
      tmp_vl=tmp_vl-1;
      xlk=tmp_vl*tmp_vl;
      cout<<"possible approximation of minus ::== " << tmp_vl <<" with " << xlk <<"\n";
      if(xlk<=mynmb){break;}
+  }
   }
 }
 
