@@ -43,13 +43,12 @@ long double part_of::get_the_part(long double nbm,int till,int prc){
                         lk=stoi(&ck);
                         this->rvt+=to_string(lk);
                      }
-
           if(till!=-1){
-                if(ck=='.'){break;}
-          }
+                        if(ck=='.'){break;}
+                      }
           if(till==-1){
-              if(ck=='.'){pd=all_pos;}
-          }
+                        if(ck=='.'){pd=all_pos;}
+                      }
         all_pos+=1;
      }
      this->rtv=stold(this->rvt);

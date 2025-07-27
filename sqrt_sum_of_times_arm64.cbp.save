@@ -39,6 +39,8 @@
 		<Unit filename="get_the_sum.cpp" />
 		<Unit filename="get_the_sum.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="part_of.cpp" />
+		<Unit filename="part_of.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

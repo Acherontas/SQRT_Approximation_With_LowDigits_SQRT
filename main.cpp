@@ -30,6 +30,7 @@ using namespace std;
     vector<long double> xpl;
     vector<long double> fnl_weirdo;
     vector<string> lvec;
+    vector<long double> v_cc;
     string vecl;
     long double dif;
     long double xlip;
@@ -47,7 +48,6 @@ int check_sqrt(long double mani,long double ep,long double dd,long double st,lon
                 cout<<"error continue with the rest \n";
                 return 0;
   }
-
     fractpart=modf(ep,&intpart);
     ckxlip=intpart*intpart;
     fractpart=modf(dd,&intpart);
@@ -365,6 +365,52 @@ int sqti(long double mnm,int one,int two){
    return 0;
 }
 
+void show_vcc(long double entered){
+  long double xlk;
+  long double afr;
+  stable_sort(v_cc.begin(),v_cc.end());
+  cout<<"u enter as approximation " << entered <<" with main number to find the power " << mynmb <<"\n";
+  xlk=entered*entered;
+  cout<<"as of the entered \n";
+  if(mynmb>xlk){afr=mynmb-xlk;}
+  if(mynmb<xlk){afr=xlk-mynmb;}
+  cout<< entered << " ^2 ::== " << xlk <<" me diafora " << afr <<"\n";
+  long double tmp_min;
+  tmp_min=afr;
+  long double tmp_vl;
+  tmp_vl=entered;
+  for(auto ito=0;ito<=v_cc.size()-1;ito+=1)
+  {
+     xlk=v_cc[ito]*v_cc[ito];
+     if(mynmb>xlk){afr=mynmb-xlk;}
+     if(mynmb<xlk){afr=xlk-mynmb;}
+     cout<<v_cc[ito]<<" ^2 ::== " << xlk <<" me diafora "<< afr <<"\n";
+     if(afr<tmp_min && afr>=0){tmp_min=afr;tmp_vl=v_cc[ito];}
+  }
+  xlk=tmp_vl*tmp_vl;
+  if(mynmb<=xlk){
+  cout<<"possible approximation ::== " << tmp_vl <<" with afr " << tmp_min <<"\n";}
+  if(xlk>=mynmb){
+  cout<<"possible approximation  ::== " << tmp_vl <<" -X with afr " << tmp_min <<"\n";
+  }
+  if(mynmb>=xlk){
+  cout<<"possible approximation ::== " << tmp_vl <<" with afr " << tmp_min <<"\n";
+  }
+  while(xlk<=mynmb){
+     tmp_vl=tmp_vl+1;
+     xlk=tmp_vl*tmp_vl;
+     cout<<"possible approximation of addition ::== " << tmp_vl <<" with " << xlk <<"\n";
+     if(xlk>mynmb){break;}
+  }
+  cout<<"----removing \n";
+  while(xlk>mynmb){
+     tmp_vl=tmp_vl-1;
+     xlk=tmp_vl*tmp_vl;
+     cout<<"possible approximation of minus ::== " << tmp_vl <<" with " << xlk <<"\n";
+     if(xlk<=mynmb){break;}
+  }
+}
+
 int main(int argc,char** argv)
 {
     cout<<"voyeristic behaviours and others have fun \n";
@@ -492,6 +538,7 @@ int main(int argc,char** argv)
         int pd=ptr->dot_pos;
         int lap=(ad-1)-pd;
         cout<<" with length of " << ad-1 <<" and dot length "<< pd <<" will move " << lap <<"\n" ;
+        if(lap>10){cout<<"lap for tens is more than ten will lower it \n";lap=lap=10;}
         long double t_ten=10;
         long double t_rst;
         cout<<"\n";
@@ -500,11 +547,16 @@ int main(int argc,char** argv)
         rst_f=adb*adb;
         int xstp=0;
         fractpart=modf(mynmb,&intpart);
-        cout<<"trying to reach the main number " << std::setprecision(preci)<<mynmb <<" ";
+        cout<<" trying to reach the main number " << std::setprecision(preci)<<mynmb <<" ";
+        ptr->get_the_part(intpart,-1,preci);
+        int mad=ptr->all_length;
+        int mpd=ptr->dot_pos;
+        int mlap=(ad-1)-pd;
+        cout<<" main number intpart lenght " << mad << " \n"; // dot length " << mpd << " after dot " << mlap <<"\n";
         cout<<" fract " <<std::setprecision(preci)<<fractpart << " int " << std::setprecision(preci)<<intpart<<"\n";
         cout<<"    -----------------> " << std::setprecision(preci)<<adb<<" ^2 ::== " <<std::setprecision(preci)<< rst_f <<"\n";
         frc=modf(rst_f,&intprt);
-        cout<<"temp fract "<< std::setprecision(preci)<< frc << " temp int " << std::setprecision(preci)<<intprt<<"\n";
+        cout<<" temp fract "<< std::setprecision(preci)<< frc << " temp int " << std::setprecision(preci)<<intprt<<"\n";
         if(rst_f==mynmb)
         {
           cout<<"power of 2 for "<< std::setprecision(preci)<<mynmb << " is " << std::setprecision(preci)<<rst_f <<"\n";
@@ -516,12 +568,35 @@ int main(int argc,char** argv)
           xstp=2;
         }
         cout<<"before loop xstp is " << xstp <<"\n";
+        int lshow=0;int xbrk=0;int rts=0;
         if(xstp==0){
             for(int i=0;i<=lap;i++){
+                lshow=0;
                 t_rst=adb*t_ten;
                 rst_f=t_rst*t_rst;
-                cout<<"    -----------------> " << std::setprecision(preci)<<t_rst<<" ^2 ::== " << std::setprecision(preci)<<rst_f<<"\n";
+                if(v_log==1){cout<<"using for fract " << rst_f <<"\n";}
                 frc=modf(rst_f,&intprt);
+                if(rts!=3){
+                    cout<<"getting the part of " << rst_f <<" :: ";
+                    ptr->get_the_part(intprt,-1,preci);
+                    ad=ptr->all_length;
+                    pd=ptr->dot_pos;
+                    cout<<"ad " << ad << " and mad " << mad <<"\n";
+                    rts=ad-mad;
+                }
+                if(ad==mad || ad-mad==1 || ad-mad==2 || ad-mad==3){
+                   cout<<"i push_back a near value \n";
+                   frc=modf(t_rst,&intprt);
+                   v_cc.push_back(intprt);
+                   lshow=0;
+                   xbrk=1;
+                }
+                else{
+                   lshow=1;
+                }
+                if(v_log==1 || v_log==2){
+                cout<<"    -----------------> " << std::setprecision(preci)<<t_rst<<" ^2 ::== " << std::setprecision(preci)<<rst_f<<"\n";
+                }
                 if(rst_f==mynmb)
                 {
                     cout<<"power of 2 for "<< std::setprecision(preci)<<mynmb << " is " << std::setprecision(preci)<<rst_f <<"\n";
@@ -534,14 +609,18 @@ int main(int argc,char** argv)
                     xstp=2;
                 }
                 t_ten=t_ten*10;
+                if(v_log==1){cout<<"t_ten increased \n";}
                 if(xstp!=0){break;}
+                if(xbrk==1){break;}
             }
         }
         cout<<"\n";
         psif+=1;
+        if(v_log==1){cout<<"increasing the digits " << psif <<"\n";}
         std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
         if(psif==ps_ask){break;}
         cout<<"-------------------------------------------------------\n";
     }
+    show_vcc(lt_main);
     return 0;
 }

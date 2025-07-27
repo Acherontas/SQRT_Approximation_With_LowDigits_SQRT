@@ -1,0 +1,30 @@
+#include "closes_digit_cnt.h"
+
+closes_digit_cnt::closes_digit_cnt()
+{
+    //ctor
+}
+
+closes_digit_cnt::~closes_digit_cnt()
+{
+    //dtor
+}
+
+closes_digit_cnt::closes_digit_cnt(const closes_digit_cnt& other)
+{
+    //copy ctor
+}
+
+closes_digit_cnt& closes_digit_cnt::operator=(const closes_digit_cnt& rhs)
+{
+    if (this == &rhs) return *this; // handle self assignment
+    //assignment operator
+    return *this;
+}
+
+int closes_digit_cnt::l_check(long double manm,long double to_check){
+
+        
+
+
+}
