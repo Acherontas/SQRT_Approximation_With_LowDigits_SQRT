@@ -13,7 +13,17 @@ so its a hack for a high cpu intensive chain-division task / process
 
 as long as work in the cases or range of number it works 
 
+////////////
+sometimes an error can be occured like this one
+"terminate called after throwing an instance of 'std::invalid_argument'
+  what():  stoi
+Aborted
+"
 
+increasing the precision seems to fix it 
+
+"segmentation fault" lower the digits 
+//////////////////
 
 for any information contact me 
 at acherontia.myosotis@gmail.com
