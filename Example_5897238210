@@ -1,0 +1,180 @@
+acherontas@acherontas:~/codeblocks/sqrt_sum_of_times_arm64/bin/Debug $ ./sqrt_sum_of_times_arm64 5897238210 20 250 0
+voyeristic behaviours and others have fun 
+ur number ,ur precision , ur sleep time , ur log  
+Main cdi 45
+Secondary cdi 9
+Exiting Secondary cdi 9
+with sqrt of math 76793.477652727773831
+
+9 25 |34 16| 76793.477652727773831  and main 5897238210
+-------------------------------------------------------------------------
+
+-------------------------------------------------------------------------
+
+9 |25| 34 |16| 76793.477652727773831  and main 5897238210
+-------------------------------------------------------------------------
+
+-------------------------------------------------------------------------
+
+9 26 |35 17| 76793.477652727773831  and main 5897238210
+-------------------------------------------------------------------------
+
+-------------------------------------------------------------------------
+
+9 |26| 35 |17| 76793.477652727773831  and main 5897238210
+-------------------------------------------------------------------------
+
+-------------------------------------------------------------------------
+
+10 25 |35 15| 76793.477652727773831  and main 5897238210
+-------------------------------------------------------------------------
+error continue with the rest 
+
+-------------------------------------------------------------------------
+
+10 |25| 35 |15| 76793.477652727773831  and main 5897238210
+-------------------------------------------------------------------------
+error continue with the rest 
+
+-------------------------------------------------------------------------
+
+10 26 |36 16| 76793.477652727773831  and main 5897238210
+-------------------------------------------------------------------------
+
+-------------------------------------------------------------------------
+
+10 |26| 36 |16| 76793.477652727773831  and main 5897238210
+-------------------------------------------------------------------------
+
+-------------------------------------------------------------------------
+
+
+
+---------order of near approximation numbers--------
+|----------bigger value is the nearest-------------|
+
+ 75117  73715  73715  73715  73048  70080  66862 
+----------------------------------------------------
+
+enter a number from above 
+75117
+lenght of 75117 5
+lenght of 5897238210 is 10
+default 4 loops enter 4 or more [4 is 3] 
+suggested value : 6
+6
+-------------------------------------------------------
+times 1 5 7
+main 2.2360679774997896964 second 2.6457513110645905905
+main 5 second 7
+times of 0.31943828249996995663
+new times of 0.31943828249996995663
+using 75117 * 0.31943828249996995663
+23995.245466550243232  with length of 20 and dot length 5 will move 15
+lap for tens is more than ten will lower it 
+
+ trying to reach the main number 5897238210  main number intpart lenght 10 
+ fract 0 int 5897238210
+    -----------------> 23995.245466550243232 ^2 ::== 575771805
+ temp fract 1.0339757656912845936e-25 temp int 575771805
+before loop xstp is 0
+getting the part of 57577180500 :: ad 11 and mad 10
+i push_back a near value 
+
+-------------------------------------------------------
+-------------------------------------------------------
+times 2 58 75
+main 7.6157731058639082857 second 8.6602540378443864676
+main 58 second 75
+times of 0.10154364141151877714
+new times of 0.10154364141151877714
+using 75117 * 0.10154364141151877714
+7627.6537119090559826  with length of 20 and dot length 4 will move 16
+lap for tens is more than ten will lower it 
+
+ trying to reach the main number 5897238210  main number intpart lenght 10 
+ fract 0 int 5897238210
+    -----------------> 7627.6537119090559826 ^2 ::== 58181101.1488
+ temp fract 0.1488 temp int 58181101
+before loop xstp is 0
+getting the part of 5818110114.88 :: ad 10 and mad 10
+i push_back a near value 
+
+-------------------------------------------------------
+-------------------------------------------------------
+times 3 589 751
+main 24.269322199023193981 second 27.404379212089442987
+main 589 second 751
+times of 0.032316008254358447378
+new times of 0.032316008254358447378
+using 75117 * 0.032316008254358447378
+2427.4815920426434917  with length of 20 and dot length 4 will move 16
+lap for tens is more than ten will lower it 
+
+ trying to reach the main number 5897238210  main number intpart lenght 10 
+ fract 0 int 5897238210
+    -----------------> 2427.4815920426434917 ^2 ::== 5892666.8797058870463
+ temp fract 0.8797058870462995633 temp int 5892666
+before loop xstp is 0
+getting the part of 589266687.97058870463 :: ad 9 and mad 10
+getting the part of 58926668797.058870463 :: ad 11 and mad 10
+i push_back a near value 
+
+-------------------------------------------------------
+-------------------------------------------------------
+times 4 5897 7511
+main 76.791926658991959426 second 86.666025638654966535
+main 5897 second 7511
+times of 0.010223928459458388953
+new times of 0.010223928459458388953
+using 75117 * 0.010223928459458388953
+767.99083408913580299  with length of 20 and dot length 3 will move 17
+lap for tens is more than ten will lower it 
+
+ trying to reach the main number 5897238210  main number intpart lenght 10 
+ fract 0 int 5897238210
+    -----------------> 767.99083408913580299 ^2 ::== 589809.92124492651536
+ temp fract 0.9212449265153574695 temp int 589809
+before loop xstp is 0
+getting the part of 58980992.124492651536 :: ad 8 and mad 10
+getting the part of 5898099212.4492651536 :: ad 10 and mad 10
+i push_back a near value 
+
+-------------------------------------------------------
+-------------------------------------------------------
+times 5 58972 75117
+main 242.84151210202921152 second 274.07480730632649667
+main 58972 second 75117
+times of 0.0032328435920234994944
+new times of 0.0032328435920234994944
+using 75117 * 0.0032328435920234994944
+242.84151210202921152  with length of 20 and dot length 3 will move 17
+lap for tens is more than ten will lower it 
+
+ trying to reach the main number 5897238210  main number intpart lenght 10 
+ fract 0 int 5897238210
+    -----------------> 242.84151210202921152 ^2 ::== 58972
+ temp fract 6.3108872417680944433e-30 temp int 58972
+before loop xstp is 0
+getting the part of 5897200 :: ad 7 and mad 10
+getting the part of 589720000 :: ad 9 and mad 10
+getting the part of 58972000000 :: ad 11 and mad 10
+i push_back a near value 
+
+u enter as approximation 75117 with main number to find the power 5897238210
+as of the entered 
+75117 ^2 ::== 5642563689 me diafora 254674521
+76276 ^2 ::== 5818028176 me diafora 79210034
+76799 ^2 ::== 5898086401 me diafora 848191
+239952 ^2 ::== 57576962304 me diafora 51679724094
+242748 ^2 ::== 58926591504 me diafora 53029353294
+242841 ^2 ::== 58971751281 me diafora 53074513071
+possible approximation ::== 76799 with afr 848191
+possible approximation  ::== 76799 -X with afr 848191
+----removing 
+possible approximation of minus ::== 76798 with 5897932804
+possible approximation of minus ::== 76797 with 5897779209
+possible approximation of minus ::== 76796 with 5897625616
+possible approximation of minus ::== 76795 with 5897472025
+possible approximation of minus ::== 76794 with 5897318436
+possible approximation of minus ::== 76793 with 5897164849
