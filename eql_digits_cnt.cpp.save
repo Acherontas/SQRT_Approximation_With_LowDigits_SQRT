@@ -1,0 +1,52 @@
+#include "eql_digits_cnt.h"
+
+eql_digits_cnt::eql_digits_cnt()
+{
+    //ctor
+}
+
+eql_digits_cnt::~eql_digits_cnt()
+{
+    //dtor
+}
+
+eql_digits_cnt::eql_digits_cnt(const eql_digits_cnt& other)
+{
+    //copy ctor
+}
+
+eql_digits_cnt& eql_digits_cnt::operator=(const eql_digits_cnt& rhs)
+{
+    if (this == &rhs) return *this; // handle self assignment
+    //assignment operator
+    return *this;
+}
+
+int eql_digits_cnd::fcnt(long double main,long double da_number,int prc,int logic)
+{
+    char ck;
+    int lk;
+    stringstream mnp;
+    mnp<<std::setprecision(prc)<<da_number;
+    string slk;
+    slk.clear();
+    slk+=da_number.str();
+
+    for(int i=0;i<=slk.size()-1;i++){
+      ck=slk.at(i);
+      lk=stoi(&ck);
+      if(logic==1){
+        this->mn_ar[mnarcnt]=lk;
+        mnarcnt+=1;
+      }
+      if(logic==0)
+      {
+      
+      
+      }
+
+    }
+
+
+
+}

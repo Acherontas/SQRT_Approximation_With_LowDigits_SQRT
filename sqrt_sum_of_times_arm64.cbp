@@ -36,6 +36,8 @@
 		</Compiler>
 		<Unit filename="after_the_dot.cpp" />
 		<Unit filename="after_the_dot.h" />
+		<Unit filename="eql_digits_cnt.cpp" />
+		<Unit filename="eql_digits_cnt.h" />
 		<Unit filename="get_the_sum.cpp" />
 		<Unit filename="get_the_sum.h" />
 		<Unit filename="main.cpp" />

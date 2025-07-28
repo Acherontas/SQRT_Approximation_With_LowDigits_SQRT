@@ -14,7 +14,7 @@
 	<iostream>
 	<iomanip>
 
-1753621704 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/main.cpp
+1753693466 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/main.cpp
 	<iostream>
 	<math.h>
 	<iomanip>
@@ -27,6 +27,7 @@
 	<limits>
 	<cfloat>
 	<cmath>
+	"eql_digits_cnt.h"
 
 1753377268 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/after_the_dot.cpp
 	"after_the_dot.h"
@@ -45,4 +46,13 @@
 	<sstream>
 	<iostream>
 	<iomanip>
+
+1753693582 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/eql_digits_cnt.cpp
+	"eql_digits_cnt.h"
+
+1753692872 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/eql_digits_cnt.h
+	<string>
+	<math.h>
+	<iomanip>
+	<iostream>
 

@@ -10,6 +10,7 @@
 #include <limits>
 #include <cfloat>
 #include <cmath>
+#include "eql_digits_cnt.h"
 using namespace std;
 
     long double mynmb;
@@ -40,6 +41,8 @@ using namespace std;
     long double ckep,ckdd,ckddd,ckddf;
     long double cksh,ckshep,ckshdd;
     long double x_dv;
+    int auto_v=0;
+
 
 int check_sqrt(long double mani,long double ep,long double dd,long double st,long double sh,long double shep,long double shdd,long double ddd,long double ddf)
 {
@@ -140,6 +143,7 @@ int check_sqrt(long double mani,long double ep,long double dd,long double st,lon
 
 void show_xl(){
   int xli=0;
+  if(v_log==1){cout<<"reporting size of xl vector " << xl.size()-1 <<" " << xl.capacity() <<"\n";}
   for(auto it=0;it<=xl.size()-1;it++)
   {
     dif=mynmb-xl[it];
@@ -155,6 +159,7 @@ void show_xl(){
 
 void show_fnl_weirdo(){
     cout<<"\n";
+    if(v_log==1){cout<<"the size of fnl_weirdo vector is " << fnl_weirdo.size()-1 <<" " << fnl_weirdo.capacity()<<"\n";}
     stable_sort(fnl_weirdo.begin(),fnl_weirdo.end());
     for(auto i=fnl_weirdo.size()-1;i>0;i--){
       cout<<" " << fnl_weirdo[i] << " " ;
@@ -164,6 +169,9 @@ void show_fnl_weirdo(){
 
 void show_xpl(){
   int olp=0;
+  if(v_log==1){
+  cout<<"the size of xpl vector is " << xpl.size()-1 <<" "<< xpl.capacity() <<"\n";
+  }
   stable_sort(xpl.begin(),xpl.end());
   long double mlp;
   for(auto i=0;i<=xpl.size()-1;i++){
@@ -302,7 +310,7 @@ int sqti(long double mnm,int one,int two){
     //  cout<< " @i "<< i << " " << std::setprecision(preci)<<rsto[i] <<"\n";
     //}
     //cout<<"\n";
-    if(v_log==1){cout<<"removals \n";}
+    if(v_log==1){cout<<"removals \n";cout<<"reporing rt " << rt <<"\n";}
     std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
     for(int i=0;i<=rt-1;i++){
         if(rsto[i]>rsto[rt]){
@@ -356,6 +364,7 @@ int sqti(long double mnm,int one,int two){
     check_sqrt(mnm,epi_dio,dia_dio,section_temp,section_h,section_h_epi_dio,section_h_dia_dio,dia_dio_dio,dia_dio_four);
         }
     }
+    if(v_log==1){cout<<"ending sqti reporting the results \n";}
     show_xl();
     show_xpl();
     xl.clear();
@@ -365,42 +374,63 @@ int sqti(long double mnm,int one,int two){
    return 0;
 }
 
+eql_digits_cnt *eqdg=new eql_digits_cnt();
 void show_vcc(long double entered){
   long double xlk;
   long double afr;
   stable_sort(v_cc.begin(),v_cc.end());
-  cout<<"u enter as approximation " << entered <<" with main number to find the power " << mynmb <<"\n";
+  cout<<"u enter as approximation " <<std::setprecision(preci)<< entered <<" with main number to find the power " <<std::setprecision(preci)<< mynmb <<" with psifia " << eqdg->mnarcnt <<"\n";
   xlk=entered*entered;
   cout<<"as of the entered \n";
   if(mynmb>xlk){afr=mynmb-xlk;}
   if(mynmb<xlk){afr=xlk-mynmb;}
-  cout<< entered << " ^2 ::== " << xlk <<" me diafora " << afr <<"\n";
+  eqdg->fcnt(0,xlk,preci,0);
+  cout<< entered << " ^2 ::== " <<std::setprecision(preci)<< xlk <<" ";
+  cout<<"              me idia psifia " <<std::setprecision(preci)<< eqdg->f_cnt << " ";
+  cout<<"              me diafora "<<std::setprecision(preci)<< afr <<"\n";
   long double tmp_min;
   tmp_min=afr;
   long double tmp_vl;
+  long double tmp_xlk;
+  int tmp_eq;
   tmp_vl=entered;
+  tmp_eq=eqdg->f_cnt;
   int ent=0;
   for(auto ito=0;ito<=v_cc.size()-1;ito+=1)
   {
      xlk=v_cc[ito]*v_cc[ito];
+     eqdg->fcnt(0,xlk,preci,0);
      if(mynmb>xlk){afr=mynmb-xlk;}
      if(mynmb<xlk){afr=xlk-mynmb;}
-     cout<<v_cc[ito]<<" ^2 ::== " << xlk <<" me diafora "<< afr <<"\n";
-     if(afr<tmp_min && afr>=0){tmp_min=afr;tmp_vl=v_cc[ito];}
+     cout<<v_cc[ito]<<" ^2 ::== " <<std::setprecision(preci)<< xlk <<" ";
+     cout<<"           me idia psifia " <<std::setprecision(preci)<< eqdg->f_cnt << " ";
+     cout<<"           me diafora "<<std::setprecision(preci)<< afr <<"\n";
+     if(afr<tmp_min && afr>=0){tmp_min=afr;tmp_vl=v_cc[ito];tmp_xlk=xlk;tmp_eq=eqdg->f_cnt;}
   }
   xlk=tmp_vl*tmp_vl;
   if(mynmb<=xlk){
-  cout<<"possible approximation ::== " << tmp_vl <<" with afr " << tmp_min <<"\n";}
+  cout<<"possible approximation < ::== " <<std::setprecision(preci)<< tmp_vl << " ^2 " <<std::setprecision(preci)<< xlk << " ";
+  cout<<"              me idia psifia " <<std::setprecision(preci)<< tmp_eq << " ";
+  cout<<"              me diafora "<<std::setprecision(preci)<< tmp_min <<"\n";}
   if(xlk>=mynmb){
-  cout<<"possible approximation  ::== " << tmp_vl <<" -X with afr " << tmp_min <<"\n";
+  cout<<"possible approximation > ::== " <<std::setprecision(preci)<< tmp_vl << " ^2 " <<std::setprecision(preci)<< xlk << " ";
+  cout<<"              me idia psifia " <<std::setprecision(preci)<< tmp_eq << " ";
+  cout<<"              me diafora "<<std::setprecision(preci)<< tmp_min <<"\n";
   }
   if(mynmb>=xlk){
-  cout<<"possible approximation ::== " << tmp_vl <<" with afr " << tmp_min <<"\n";
+  cout<<"possible approximation > ::== " <<std::setprecision(preci)<< tmp_vl << " ^2 " << std::setprecision(preci)<<xlk << " ";
+  cout<<"            me idia psifia " <<std::setprecision(preci)<< tmp_eq << " ";
+  cout<<"            me diafora "<<std::setprecision(preci)<< tmp_min <<"\n";
   }
   while(xlk<=mynmb){
      tmp_vl=tmp_vl+1;
      xlk=tmp_vl*tmp_vl;
-     cout<<"possible approximation of addition ::== " << tmp_vl <<" with " << xlk <<"\n";
+     eqdg->fcnt(0,xlk,preci,0);
+     if(mynmb>xlk){afr=mynmb-xlk;}
+     if(mynmb<xlk){afr=xlk-mynmb;}
+     cout<<"possible approximation of addition ::== " << std::setprecision(preci)<<tmp_vl <<" with ^2  " << std::setprecision(preci)<<xlk <<" ";
+     cout<<"            me idia psifia " <<std::setprecision(preci)<< eqdg->f_cnt << " ";
+     cout<<"            me diafora " <<std::setprecision(preci)<< afr <<"\n";
      if(xlk>mynmb){ent+=1;break;}
   }
   if(ent==0){
@@ -408,7 +438,12 @@ void show_vcc(long double entered){
   while(xlk>mynmb){
      tmp_vl=tmp_vl-1;
      xlk=tmp_vl*tmp_vl;
-     cout<<"possible approximation of minus ::== " << tmp_vl <<" with " << xlk <<"\n";
+     eqdg->fcnt(0,xlk,preci,0);
+     if(mynmb>xlk){afr=mynmb-xlk;}
+     if(mynmb<xlk){afr=xlk-mynmb;}
+     cout<<"possible approximation of minus ::== " <<std::setprecision(preci)<< tmp_vl <<" with ^2  " <<std::setprecision(preci)<< xlk <<" ";
+     cout<<"            me idia psifia " <<std::setprecision(preci)<< eqdg->f_cnt << " ";
+     cout<<"            me diafora " <<std::setprecision(preci)<< afr <<"\n" ;
      if(xlk<=mynmb){break;}
   }
   }
@@ -417,11 +452,14 @@ void show_vcc(long double entered){
 int main(int argc,char** argv)
 {
     cout<<"voyeristic behaviours and others have fun \n";
-    cout<<"ur number ,ur precision , ur sleep time , ur log  \n";
+    cout<<"ur number ,ur precision , ur sleep time , ur log ,ur automation 0 no 1 auto  \n";
     mynmb=stold(argv[1]);
     preci=stoi(argv[2]);
     st_th=stoi(argv[3]);
     v_log=stoi(argv[4]);
+    auto_v=stoi(argv[5]);
+    eqdg->fcnt(0,mynmb,preci,1);
+    cout<<eqdg->mnarcnt<<"\n";
     int ar_one[4]={9,25,34,16};
     int ar_two[4]={9,26,35,17};
     int ar_three[4]={10,25,35,15};
@@ -496,8 +534,12 @@ int main(int argc,char** argv)
     long double lt_main;
     long double lt;
     cout<<"\n";
-    cout<<"enter a number from above \n";
-    cin>>lt_main;
+    if(auto_v==1){lt_main=fnl_weirdo[0];
+                  cout<<"auto value is "<<lt_main <<"\n";
+                  std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+                 }
+    if(auto_v==0){cout<<"enter a number from above \n";
+    cin>>lt_main;}
     cout<<"lenght of " <<std::setprecision(preci)<< lt_main <<" " ;
     lt=gti->get_da_number(lt_main,2,preci);
     int k=gti->gt_leng;
@@ -509,9 +551,15 @@ int main(int argc,char** argv)
     long double abqr;
     int psif=1;
     int ps_ask;
-    cout<<"default 4 loops enter 4 or more [4 is 3] \n";
-    cout<<"suggested value : " << k+1 <<"\n";
-    cin>>ps_ask;
+
+    if(auto_v==0){cout<<"default 4 loops enter 4 or more [4 is 3] \n";
+                  cout<<"suggested value : " << k+1 <<"\n";
+                  cin>>ps_ask;
+                 }
+    if(auto_v==1){ps_ask=k+1;
+                  cout<<"moving with ps_ask " << ps_ask <<"\n";
+                  std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+                 }
     for(;;){
         cout<<"-------------------------------------------------------\n";
         cout<<"times " << psif <<" ";
