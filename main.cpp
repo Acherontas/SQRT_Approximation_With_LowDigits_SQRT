@@ -11,6 +11,7 @@
 #include <cfloat>
 #include <cmath>
 #include "eql_digits_cnt.h"
+#include "bee_cls.h"
 using namespace std;
 
     long double mynmb;
@@ -42,7 +43,6 @@ using namespace std;
     long double cksh,ckshep,ckshdd;
     long double x_dv;
     int auto_v=0;
-
 
 int check_sqrt(long double mani,long double ep,long double dd,long double st,long double sh,long double shep,long double shdd,long double ddd,long double ddf)
 {
@@ -202,7 +202,6 @@ void show_xpl(){
  cout<<"\n";
 }
 
-
 int sqti(long double mnm,int one,int two){
     after_the_dot *aft=new after_the_dot();
     cout<<"-------------------------------------------------------------------------\n";
@@ -214,6 +213,9 @@ int sqti(long double mnm,int one,int two){
     dia_dio=intpart/2;
     section_temp=aft->gen_after_dot(rsto[rt]);
     section_h=(long double)intpart/(long double)section_temp;
+    if(v_log==1){
+                 cout<<"section_temp "<<std::setprecision(preci)<<section_temp<<"\n";
+                 cout<<"section h " << std::setprecision(preci)<<section_h<<"\n";}
     section_h_epi_dio=section_h*2;
     section_h_dia_dio=(long double)section_h/(long double)2;
     dia_dio_dio=(long double)dia_dio/2;
@@ -240,6 +242,9 @@ int sqti(long double mnm,int one,int two){
         dia_dio=intpart/2;
         section_temp=aft->gen_after_dot(rsto[rt]);
         section_h=(long double)intpart/(long double)section_temp;
+        if(v_log==1){
+                 cout<<"section_temp "<<std::setprecision(preci)<<section_temp<<"\n";
+                 cout<<"section h " << std::setprecision(preci)<<section_h<<"\n";}
         section_h_epi_dio=section_h*2;
         section_h_dia_dio=(long double)section_h/(long double)2;
         dia_dio_dio=(long double)dia_dio/2;
@@ -266,6 +271,9 @@ int sqti(long double mnm,int one,int two){
     dia_dio=intpart/2;
     section_temp=aft->gen_after_dot(rsto[rt]);
     section_h=(long double)intpart/(long double)section_temp;
+    if(v_log==1){
+                 cout<<"section_temp "<<std::setprecision(preci)<<section_temp<<"\n";
+                 cout<<"section h " << std::setprecision(preci)<<section_h<<"\n";}
     section_h_epi_dio=section_h*2;
     section_h_dia_dio=(long double)section_h/(long double)2;
     dia_dio_dio=(long double)dia_dio/2;
@@ -290,6 +298,9 @@ int sqti(long double mnm,int one,int two){
     dia_dio=intpart/2;
     section_temp=aft->gen_after_dot(rsto[rt]);
     section_h=(long double)intpart/(long double)section_temp;
+    if(v_log==1){
+                 cout<<"section_temp "<<std::setprecision(preci)<<section_temp<<"\n";
+                 cout<<"section h " << std::setprecision(preci)<<section_h<<"\n";}
     section_h_epi_dio=section_h*2;
     section_h_dia_dio=(long double)section_h/(long double)2;
     dia_dio_dio=(long double)dia_dio/2;
@@ -321,6 +332,9 @@ int sqti(long double mnm,int one,int two){
                             dia_dio=intpart/2;
                             section_temp=aft->gen_after_dot(afair);
                             section_h=(long double)intpart/(long double)section_temp;
+                            if(v_log==1){
+                                        cout<<"section_temp "<<std::setprecision(preci)<<section_temp<<"\n";
+                                        cout<<"section h " << std::setprecision(preci)<<section_h<<"\n";}
                             section_h_epi_dio=section_h*2;
                             section_h_dia_dio=(long double)section_h/(long double)2;
                             dia_dio_dio=(long double)dia_dio/2;
@@ -346,6 +360,9 @@ int sqti(long double mnm,int one,int two){
                             dia_dio=intpart/2;
                             section_temp=aft->gen_after_dot(afair);
                             section_h=(long double)intpart/(long double)section_temp;
+                            if(v_log==1){
+                                        cout<<"section_temp "<<std::setprecision(preci)<<section_temp<<"\n";
+                                        cout<<"section h " << std::setprecision(preci)<<section_h<<"\n";}
                             section_h_epi_dio=section_h*2;
                             section_h_dia_dio=(long double)section_h/(long double)2;
                             dia_dio_dio=(long double)dia_dio/2;
@@ -408,6 +425,9 @@ void show_vcc(long double entered){
      if(afr<tmp_min && afr>=0){tmp_min=afr;tmp_vl=v_cc[ito];tmp_xlk=xlk;tmp_eq=eqdg->f_cnt;}
   }
   xlk=tmp_vl*tmp_vl;
+  cout<<"\n";
+  cout<<"\n";
+  cout<<"-------------------------Approximation Result Set-----------------------------------------------------\n";
   if(mynmb<=xlk){
   cout<<"possible approximation < ::== " <<std::setprecision(preci)<< tmp_vl << " ^2 " <<std::setprecision(preci)<< xlk << " ";
   cout<<"              me idia psifia " <<std::setprecision(preci)<< tmp_eq << " ";
@@ -447,6 +467,7 @@ void show_vcc(long double entered){
      if(xlk<=mynmb){break;}
   }
   }
+  cout<<"\n";
 }
 
 int main(int argc,char** argv)
@@ -464,6 +485,7 @@ int main(int argc,char** argv)
     int ar_two[4]={9,26,35,17};
     int ar_three[4]={10,25,35,15};
     int ar_four[4]={10,26,36,16};
+    cout<<"with main number "<<std::setprecision(preci) << mynmb <<"\n";
     get_the_sum *gti=new get_the_sum();
     cdis[cs]=gti->get_da_number(mynmb,1,preci);
     cout<<"Main cdi " << cdis[cs] <<"\n";
@@ -672,6 +694,29 @@ int main(int argc,char** argv)
         if(psif==ps_ask){break;}
         cout<<"-------------------------------------------------------\n";
     }
+    cout<<"\n";
+    cout<<"\n";
     show_vcc(lt_main);
+    int x_stp=0;
+    long double tmpf;
+    int v_bee_log=-1;
+    bee_cls *bee = new bee_cls();
+    cout<<"\n";
+    cout<<"\n";
+    cout<<"------------------------Bee-----------------------------\n";
+    for(;;){
+        cout<<"enter one of the approximated number from above \n";
+        cin>>tmpf;
+        cout<<"enter log level 0 or 1\n";
+        cin>>v_bee_log;
+        cout<<"entering with "<< std::setprecision(preci)<<tmpf <<" and log of bee " << v_bee_log <<"\n";
+        bee->bee_man(mynmb,tmpf,preci,v_bee_log);
+        cout<<"enter 1 to exit \n";
+        cin>>x_stp;
+        if(x_stp==1){break;}
+        if(x_stp!=1){
+           cout<<"-------------------------------------------------\n";
+        }
+    }
     return 0;
 }

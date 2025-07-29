@@ -1,0 +1,24 @@
+#ifndef BEE_CLS_H
+#define BEE_CLS_H
+#include <string>
+#include <math.h>
+#include <iomanip>
+#include <thread>
+#include <iostream>
+using namespace std;
+
+class bee_cls
+{
+    public:
+        bee_cls();
+        virtual ~bee_cls();
+        bee_cls(const bee_cls& other);
+        bee_cls& operator=(const bee_cls& other);
+        int bee_man(long double fr,long double sc,int rts,int logl);
+
+    protected:
+
+    private:
+};
+
+#endif // BEE_CLS_H

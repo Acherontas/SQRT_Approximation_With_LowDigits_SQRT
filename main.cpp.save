@@ -11,6 +11,7 @@
 #include <cfloat>
 #include <cmath>
 #include "eql_digits_cnt.h"
+#include "bee_cls.h"
 using namespace std;
 
     long double mynmb;
@@ -214,6 +215,9 @@ int sqti(long double mnm,int one,int two){
     dia_dio=intpart/2;
     section_temp=aft->gen_after_dot(rsto[rt]);
     section_h=(long double)intpart/(long double)section_temp;
+    if(v_log==1){
+                 cout<<"section_temp "<<std::setprecision(preci)<<section_temp<<"\n";
+                 cout<<"section h " << std::setprecision(preci)<<section_h<<"\n";}
     section_h_epi_dio=section_h*2;
     section_h_dia_dio=(long double)section_h/(long double)2;
     dia_dio_dio=(long double)dia_dio/2;
@@ -240,6 +244,9 @@ int sqti(long double mnm,int one,int two){
         dia_dio=intpart/2;
         section_temp=aft->gen_after_dot(rsto[rt]);
         section_h=(long double)intpart/(long double)section_temp;
+        if(v_log==1){
+                 cout<<"section_temp "<<std::setprecision(preci)<<section_temp<<"\n";
+                 cout<<"section h " << std::setprecision(preci)<<section_h<<"\n";}
         section_h_epi_dio=section_h*2;
         section_h_dia_dio=(long double)section_h/(long double)2;
         dia_dio_dio=(long double)dia_dio/2;
@@ -266,6 +273,9 @@ int sqti(long double mnm,int one,int two){
     dia_dio=intpart/2;
     section_temp=aft->gen_after_dot(rsto[rt]);
     section_h=(long double)intpart/(long double)section_temp;
+    if(v_log==1){
+                 cout<<"section_temp "<<std::setprecision(preci)<<section_temp<<"\n";
+                 cout<<"section h " << std::setprecision(preci)<<section_h<<"\n";}
     section_h_epi_dio=section_h*2;
     section_h_dia_dio=(long double)section_h/(long double)2;
     dia_dio_dio=(long double)dia_dio/2;
@@ -290,6 +300,9 @@ int sqti(long double mnm,int one,int two){
     dia_dio=intpart/2;
     section_temp=aft->gen_after_dot(rsto[rt]);
     section_h=(long double)intpart/(long double)section_temp;
+    if(v_log==1){
+                 cout<<"section_temp "<<std::setprecision(preci)<<section_temp<<"\n";
+                 cout<<"section h " << std::setprecision(preci)<<section_h<<"\n";}
     section_h_epi_dio=section_h*2;
     section_h_dia_dio=(long double)section_h/(long double)2;
     dia_dio_dio=(long double)dia_dio/2;
@@ -321,6 +334,9 @@ int sqti(long double mnm,int one,int two){
                             dia_dio=intpart/2;
                             section_temp=aft->gen_after_dot(afair);
                             section_h=(long double)intpart/(long double)section_temp;
+                            if(v_log==1){
+                                        cout<<"section_temp "<<std::setprecision(preci)<<section_temp<<"\n";
+                                        cout<<"section h " << std::setprecision(preci)<<section_h<<"\n";}
                             section_h_epi_dio=section_h*2;
                             section_h_dia_dio=(long double)section_h/(long double)2;
                             dia_dio_dio=(long double)dia_dio/2;
@@ -346,6 +362,9 @@ int sqti(long double mnm,int one,int two){
                             dia_dio=intpart/2;
                             section_temp=aft->gen_after_dot(afair);
                             section_h=(long double)intpart/(long double)section_temp;
+                            if(v_log==1){
+                                        cout<<"section_temp "<<std::setprecision(preci)<<section_temp<<"\n";
+                                        cout<<"section h " << std::setprecision(preci)<<section_h<<"\n";}
                             section_h_epi_dio=section_h*2;
                             section_h_dia_dio=(long double)section_h/(long double)2;
                             dia_dio_dio=(long double)dia_dio/2;
@@ -464,6 +483,7 @@ int main(int argc,char** argv)
     int ar_two[4]={9,26,35,17};
     int ar_three[4]={10,25,35,15};
     int ar_four[4]={10,26,36,16};
+    cout<<"with main number "<<std::setprecision(preci) << mynmb <<"\n";
     get_the_sum *gti=new get_the_sum();
     cdis[cs]=gti->get_da_number(mynmb,1,preci);
     cout<<"Main cdi " << cdis[cs] <<"\n";
@@ -551,11 +571,15 @@ int main(int argc,char** argv)
     long double abqr;
     int psif=1;
     int ps_ask;
-    
+
     if(auto_v==0){cout<<"default 4 loops enter 4 or more [4 is 3] \n";
-                  cout<<"suggested value : " << k+1 <<"\n"
-                  cin>>ps_ask;};
-    
+                  cout<<"suggested value : " << k+1 <<"\n";
+                  cin>>ps_ask;
+                 }
+    if(auto_v==1){ps_ask=k+1;
+                  cout<<"moving with ps_ask " << ps_ask <<"\n";
+                  std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+                 }
     for(;;){
         cout<<"-------------------------------------------------------\n";
         cout<<"times " << psif <<" ";
@@ -669,5 +693,17 @@ int main(int argc,char** argv)
         cout<<"-------------------------------------------------------\n";
     }
     show_vcc(lt_main);
+    
+    
+    int x_stp=0;
+    long double tmpf;
+    bee_cls *bee = new bee_cls();
+    for(;;){
+        cout<<"enter one of the approximated number from above \n";
+        cin>>tmpf;
+        cout<<"entering with "<< std::setprecision(preci)<<tmpf <<"\n";
+        bee->bee_man(mynmb,tmpf,preci,v_log);
+        cout<<"enter 1 to exit "    
+    }
     return 0;
 }
