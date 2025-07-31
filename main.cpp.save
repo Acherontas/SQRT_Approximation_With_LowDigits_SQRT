@@ -33,6 +33,7 @@ using namespace std;
     vector<long double> fnl_weirdo;
     vector<string> lvec;
     vector<long double> v_cc;
+    vector<long double> for_the_bee;
     string vecl;
     long double dif;
     long double xlip;
@@ -43,103 +44,144 @@ using namespace std;
     long double cksh,ckshep,ckshdd;
     long double x_dv;
     int auto_v=0;
-
+    int r_check_count=0;
+    int bee_x_stp=0;
+    long double bee_tmpf;
+    int v_bee_log=-1;
+    long double appro_auto;
 
 int check_sqrt(long double mani,long double ep,long double dd,long double st,long double sh,long double shep,long double shdd,long double ddd,long double ddf)
 {
   if(isinf(mani) || isinf(ep) || isinf(dd) || isinf(st) || isinf(sh) || isinf(shep) || isinf(shdd) || isinf(ddd) || isinf(ddf))
   {
                 cout<<"error continue with the rest \n";
-                return 0;
   }
-    fractpart=modf(ep,&intpart);
-    ckxlip=intpart*intpart;
-    fractpart=modf(dd,&intpart);
-    ckep=intpart*intpart;
-    fractpart=modf(st,&intpart);
-    ckdd=intpart*intpart;
-    fractpart=modf(sh,&intpart);
-    ckddd=intpart*intpart;
-    fractpart=modf(shep,&intpart);
-    ckddf=intpart*intpart;
-    fractpart=modf(shdd,&intpart);
-    cksh=intpart*intpart;
-    fractpart=modf(ddd,&intpart);
-    ckshep=intpart*intpart;
-    fractpart=modf(ddf,&intpart);
-    ckshdd=intpart*intpart;
-    if(ckxlip<=mani){xl.push_back(ckxlip);lx.push_back(ep);}
-    if(ckxlip>mani){
-        while(ckxlip>mani){
-             ep=ep/10;
-             fractpart=modf(ep,&intpart);
-             ckxlip=intpart*intpart;
-             if(ckxlip<=mani){xl.push_back(ckxlip);lx.push_back(ep);break;}
+
+    if(!isinf(ep)){
+         fractpart=modf(ep,&intpart);
+         ckxlip=intpart*intpart;
+        if(ckxlip<=mani){xl.push_back(ckxlip);lx.push_back(ep);}
+            if(ckxlip>mani){
+                while(ckxlip>mani){
+                ep=ep/10;
+                fractpart=modf(ep,&intpart);
+                ckxlip=intpart*intpart;
+                if(ckxlip<=mani){xl.push_back(ckxlip);lx.push_back(ep);break;}
+            }
+        }
+        if(v_log==1){cout<<"i insert "<<std::setprecision(preci)<<ckxlip <<" " << std::setprecision(preci)<<ep <<"\n";}
+    }
+
+    if(!isinf(dd)){
+        fractpart=modf(dd,&intpart);
+        ckep=intpart*intpart;
+            if(ckep<=mani){xl.push_back(ckep);lx.push_back(dd);}
+            if(ckep>mani){
+                while(ckep>mani){
+                    dd=dd/10;
+                    fractpart=modf(dd,&intpart);
+                    ckep=intpart*intpart;
+                    if(ckep<=mani){xl.push_back(ckep);lx.push_back(dd);break;}
         }
     }
-    if(ckep<=mani){xl.push_back(ckep);lx.push_back(dd);}
-    if(ckep>mani){
-        while(ckep>mani){
-             dd=dd/10;
-             fractpart=modf(dd,&intpart);
-             ckep=intpart*intpart;
-             if(ckep<=mani){xl.push_back(ckep);lx.push_back(dd);break;}
-        }
+        if(v_log==1){cout<<"i insert "<<std::setprecision(preci)<<ckep <<" " << std::setprecision(preci)<<dd <<"\n";}
     }
-    if(ckdd<=mani){xl.push_back(ckdd);lx.push_back(st);}
-    if(ckdd>mani){
-       while(ckdd>mani){
-             st=st/10;
-             fractpart=modf(st,&intpart);
-             ckdd=intpart*intpart;
-             if(ckdd<=mani){xl.push_back(ckdd);lx.push_back(st);break;}
-        }
+
+    if(!isinf(st)){
+        fractpart=modf(st,&intpart);
+        ckdd=intpart*intpart;
+            if(ckdd<=mani){xl.push_back(ckdd);lx.push_back(st);}
+            if(ckdd>mani){
+                while(ckdd>mani){
+                    st=st/10;
+                    fractpart=modf(st,&intpart);
+                    ckdd=intpart*intpart;
+                    if(ckdd<=mani){xl.push_back(ckdd);lx.push_back(st);break;}
+                }
+            }
+        if(v_log==1){cout<<"i insert "<<std::setprecision(preci)<<ckdd <<" " << std::setprecision(preci)<<st <<"\n";}
     }
-    if(ckddd<=mani){xl.push_back(ckddd);lx.push_back(sh);}
-    if(ckddd>mani){
-       while(ckddd>mani){
-             sh=sh/10;
-             fractpart=modf(sh,&intpart);
-             ckddd=intpart*intpart;
-             if(ckddd<=mani){xl.push_back(ckddd);lx.push_back(sh);break;}
-        }
+
+    if(!isinf(sh)){
+        fractpart=modf(sh,&intpart);
+        ckddd=intpart*intpart;
+            if(ckddd<=mani){xl.push_back(ckddd);lx.push_back(sh);}
+            if(ckddd>mani){
+                while(ckddd>mani){
+                    sh=sh/10;
+                    fractpart=modf(sh,&intpart);
+                    ckddd=intpart*intpart;
+                    if(ckddd<=mani){xl.push_back(ckddd);lx.push_back(sh);break;}
+                }
+            }
+        if(v_log==1){cout<<"i insert "<<std::setprecision(preci)<<ckddd <<" " << std::setprecision(preci)<<sh <<"\n";}
     }
-    if(ckddf<=mani){xl.push_back(ckddf);lx.push_back(shep);}
-    if(ckddf>mani){
-      while(ckddf>mani){
-             shep=shep/10;
-             fractpart=modf(shep,&intpart);
-             ckddf=intpart*intpart;
-             if(ckddf<=mani){xl.push_back(ckddf);lx.push_back(shep);break;}
-        }
+
+
+    if(!isinf(shep)){
+            fractpart=modf(shep,&intpart);
+            ckddf=intpart*intpart;
+            if(ckddf<=mani){xl.push_back(ckddf);lx.push_back(shep);}
+            if(ckddf>mani){
+                while(ckddf>mani){
+                    shep=shep/10;
+                    fractpart=modf(shep,&intpart);
+                    ckddf=intpart*intpart;
+                    if(ckddf<=mani){xl.push_back(ckddf);lx.push_back(shep);break;}
+                }
+            }
+        if(v_log==1){cout<<"i insert "<<std::setprecision(preci)<<ckddf <<" " << std::setprecision(preci)<<shep <<"\n";}
     }
-    if(cksh<=mani){xl.push_back(cksh);lx.push_back(shdd);}
-    if(cksh>mani){
-        while(cksh>mani){
-             shdd=shdd/10;
-             fractpart=modf(shdd,&intpart);
-             cksh=intpart*intpart;
-             if(cksh<=mani){xl.push_back(cksh);lx.push_back(shdd);break;}
+
+
+    if(!isinf(shdd)){
+        fractpart=modf(shdd,&intpart);
+        cksh=intpart*intpart;
+        if(cksh<=mani){xl.push_back(cksh);lx.push_back(shdd);}
+        if(cksh>mani){
+            while(cksh>mani){
+                shdd=shdd/10;
+                fractpart=modf(shdd,&intpart);
+                cksh=intpart*intpart;
+                if(cksh<=mani){xl.push_back(cksh);lx.push_back(shdd);break;}
+            }
         }
+        if(v_log==1){cout<<"i insert "<<std::setprecision(preci)<<cksh <<" " << std::setprecision(preci)<<shdd <<"\n";}
     }
-    if(ckshep<=mani){xl.push_back(ckshep);lx.push_back(ddd);}
-    if(ckshep>mani){
-      while(ckshep>mani){
-             ddd=dd/10;
-             fractpart=modf(ddd,&intpart);
-             ckshep=intpart*intpart;
-             if(ckshep<=mani){xl.push_back(ckshep);lx.push_back(dd);break;}
+
+
+    if(!isinf(ddd)){
+        fractpart=modf(ddd,&intpart);
+        ckshep=intpart*intpart;
+        if(ckshep<=mani){xl.push_back(ckshep);lx.push_back(ddd);}
+        if(ckshep>mani){
+            while(ckshep>mani){
+                ddd=dd/10;
+                fractpart=modf(ddd,&intpart);
+                ckshep=intpart*intpart;
+                if(ckshep<=mani){xl.push_back(ckshep);lx.push_back(ddd);break;}
+            }
         }
+        if(v_log==1){cout<<"i insert "<<std::setprecision(preci)<<ckshep <<" " << std::setprecision(preci)<<ddd <<"\n";}
     }
-    if(ckshdd<=mani){xl.push_back(ckshdd);lx.push_back(ddf);}
-    if(ckshdd>mani){
-       while(ckshdd>mani){
-             ddf=ddf/10;
-             fractpart=modf(ddf,&intpart);
-             ckshdd=intpart*intpart;
-             if(ckshdd<=mani){xl.push_back(ckshdd);lx.push_back(ddf);break;}
+
+
+    if(!isinf(ddf)){
+        fractpart=modf(ddf,&intpart);
+        ckshdd=intpart*intpart;
+        if(ckshdd<=mani){xl.push_back(ckshdd);lx.push_back(ddf);}
+        if(ckshdd>mani){
+        while(ckshdd>mani){
+                ddf=ddf/10;
+                fractpart=modf(ddf,&intpart);
+                ckshdd=intpart*intpart;
+                if(ckshdd<=mani){xl.push_back(ckshdd);lx.push_back(ddf);break;}
         }
+        }
+        if(v_log==1){cout<<"i insert "<<std::setprecision(preci)<<ckshdd <<" " << std::setprecision(preci)<<ddf <<"\n";}
     }
+
+    return 0;
 }
 
 void show_xl(){
@@ -147,6 +189,7 @@ void show_xl(){
   if(v_log==1){cout<<"reporting size of xl vector " << xl.size()-1 <<" " << xl.capacity() <<"\n";}
   for(auto it=0;it<=xl.size()-1;it++)
   {
+    if(v_log==1){cout<<"entering amfidromi loop of xl vector  with first \n" ;}
     dif=mynmb-xl[it];
     if(v_log==1){
             x_dv=lx[it]*lx[it];
@@ -162,6 +205,7 @@ void show_fnl_weirdo(){
     cout<<"\n";
     if(v_log==1){cout<<"the size of fnl_weirdo vector is " << fnl_weirdo.size()-1 <<" " << fnl_weirdo.capacity()<<"\n";}
     stable_sort(fnl_weirdo.begin(),fnl_weirdo.end());
+    if(auto_v==1){appro_auto=fnl_weirdo[fnl_weirdo.size()-1];}
     for(auto i=fnl_weirdo.size()-1;i>0;i--){
       cout<<" " << fnl_weirdo[i] << " " ;
     }
@@ -202,7 +246,6 @@ void show_xpl(){
   }
  cout<<"\n";
 }
-
 
 int sqti(long double mnm,int one,int two){
     after_the_dot *aft=new after_the_dot();
@@ -399,11 +442,13 @@ void show_vcc(long double entered){
   long double afr;
   stable_sort(v_cc.begin(),v_cc.end());
   cout<<"u enter as approximation " <<std::setprecision(preci)<< entered <<" with main number to find the power " <<std::setprecision(preci)<< mynmb <<" with psifia " << eqdg->mnarcnt <<"\n";
+  for_the_bee.push_back(entered);
   xlk=entered*entered;
   cout<<"as of the entered \n";
   if(mynmb>xlk){afr=mynmb-xlk;}
   if(mynmb<xlk){afr=xlk-mynmb;}
-  eqdg->fcnt(0,xlk,preci,0);
+  if(v_log==0){eqdg->fcnt(0,xlk,preci,0,0);}
+  if(v_log==1){eqdg->fcnt(0,xlk,preci,0,1);}
   cout<< entered << " ^2 ::== " <<std::setprecision(preci)<< xlk <<" ";
   cout<<"              me idia psifia " <<std::setprecision(preci)<< eqdg->f_cnt << " ";
   cout<<"              me diafora "<<std::setprecision(preci)<< afr <<"\n";
@@ -415,10 +460,23 @@ void show_vcc(long double entered){
   tmp_vl=entered;
   tmp_eq=eqdg->f_cnt;
   int ent=0;
+  int psifia_for_auto=0;
+  long double pwrd;
   for(auto ito=0;ito<=v_cc.size()-1;ito+=1)
   {
      xlk=v_cc[ito]*v_cc[ito];
-     eqdg->fcnt(0,xlk,preci,0);
+     if(v_log==0){eqdg->fcnt(0,xlk,preci,0,0);}
+     if(v_log==1){eqdg->fcnt(0,xlk,preci,0,1);}
+     if(psifia_for_auto>0){
+                            if ((eqdg->f_cnt)>psifia_for_auto) {
+                                 psifia_for_auto=eqdg->f_cnt;
+                                 pwrd=v_cc[ito];
+                            }
+                          }
+     if(psifia_for_auto==0){
+                                psifia_for_auto=eqdg->f_cnt;
+                                pwrd=v_cc[ito];
+                           }
      if(mynmb>xlk){afr=mynmb-xlk;}
      if(mynmb<xlk){afr=xlk-mynmb;}
      cout<<v_cc[ito]<<" ^2 ::== " <<std::setprecision(preci)<< xlk <<" ";
@@ -427,63 +485,89 @@ void show_vcc(long double entered){
      if(afr<tmp_min && afr>=0){tmp_min=afr;tmp_vl=v_cc[ito];tmp_xlk=xlk;tmp_eq=eqdg->f_cnt;}
   }
   xlk=tmp_vl*tmp_vl;
+  cout<<"\n";
+  cout<<"\n";
+  cout<<"-------------------------Approximation Result Set-----------------------------------------------------\n";
   if(mynmb<=xlk){
   cout<<"possible approximation < ::== " <<std::setprecision(preci)<< tmp_vl << " ^2 " <<std::setprecision(preci)<< xlk << " ";
   cout<<"              me idia psifia " <<std::setprecision(preci)<< tmp_eq << " ";
-  cout<<"              me diafora "<<std::setprecision(preci)<< tmp_min <<"\n";}
+  cout<<"              me diafora "<<std::setprecision(preci)<< tmp_min <<"\n";
+  for_the_bee.push_back(tmp_vl);
+  }
   if(xlk>=mynmb){
   cout<<"possible approximation > ::== " <<std::setprecision(preci)<< tmp_vl << " ^2 " <<std::setprecision(preci)<< xlk << " ";
   cout<<"              me idia psifia " <<std::setprecision(preci)<< tmp_eq << " ";
   cout<<"              me diafora "<<std::setprecision(preci)<< tmp_min <<"\n";
+  for_the_bee.push_back(tmp_vl);
   }
   if(mynmb>=xlk){
   cout<<"possible approximation > ::== " <<std::setprecision(preci)<< tmp_vl << " ^2 " << std::setprecision(preci)<<xlk << " ";
   cout<<"            me idia psifia " <<std::setprecision(preci)<< tmp_eq << " ";
   cout<<"            me diafora "<<std::setprecision(preci)<< tmp_min <<"\n";
+  for_the_bee.push_back(tmp_vl);
   }
+  //bee_tmpf=tmp_vl;
   while(xlk<=mynmb){
      tmp_vl=tmp_vl+1;
      xlk=tmp_vl*tmp_vl;
-     eqdg->fcnt(0,xlk,preci,0);
+     if(v_log==0){eqdg->fcnt(0,xlk,preci,0,0);}
+     if(v_log==1){eqdg->fcnt(0,xlk,preci,0,1);}
      if(mynmb>xlk){afr=mynmb-xlk;}
      if(mynmb<xlk){afr=xlk-mynmb;}
+     if(mynmb==xlk){afr=0;}
      cout<<"possible approximation of addition ::== " << std::setprecision(preci)<<tmp_vl <<" with ^2  " << std::setprecision(preci)<<xlk <<" ";
      cout<<"            me idia psifia " <<std::setprecision(preci)<< eqdg->f_cnt << " ";
      cout<<"            me diafora " <<std::setprecision(preci)<< afr <<"\n";
-     if(xlk>mynmb){ent+=1;break;}
+     for_the_bee.push_back(tmp_vl);
+     if(xlk>mynmb){ent+=1; bee_tmpf=tmp_vl;
+        cout<<"will pass value of "<< bee_tmpf <<"\n"; break;}
+     if(xlk==mynmb){ent+=1; bee_tmpf=tmp_vl;
+        cout<<"will pass value of "<< bee_tmpf <<"\n"; break;}
   }
   if(ent==0){
-  cout<<"----removing \n";
+  cout<<"----removing using main number " << mynmb <<"\n";
   while(xlk>mynmb){
      tmp_vl=tmp_vl-1;
      xlk=tmp_vl*tmp_vl;
-     eqdg->fcnt(0,xlk,preci,0);
-     if(mynmb>xlk){afr=mynmb-xlk;}
-     if(mynmb<xlk){afr=xlk-mynmb;}
+     if(v_log==0){eqdg->fcnt(0,xlk,preci,0,0);}
+     if(v_log==1){eqdg->fcnt(0,xlk,preci,0,1);}
+     if(xlk<mynmb){afr=mynmb-xlk;}
+     if(xlk>mynmb){afr=xlk-mynmb;}
+     if(mynmb==xlk){afr=0;}
+     if(isinf(afr)){afr=0;}
+     for_the_bee.push_back(tmp_vl);
      cout<<"possible approximation of minus ::== " <<std::setprecision(preci)<< tmp_vl <<" with ^2  " <<std::setprecision(preci)<< xlk <<" ";
      cout<<"            me idia psifia " <<std::setprecision(preci)<< eqdg->f_cnt << " ";
      cout<<"            me diafora " <<std::setprecision(preci)<< afr <<"\n" ;
-     if(xlk<=mynmb){break;}
+     if(xlk<=mynmb){
+        bee_tmpf=tmp_vl;
+        cout<<"will pass value of "<< bee_tmpf <<"\n";
+        break;
+        }
   }
   }
+  cout<<"\n";
 }
 
 int main(int argc,char** argv)
 {
     cout<<"voyeristic behaviours and others have fun \n";
-    cout<<"ur number ,ur precision , ur sleep time , ur log ,ur automation 0 no 1 auto  \n";
+    cout<<"ur number ,ur precision , ur sleep time , ur log ,ur automation 0 no 1 auto , ur bee auto 0 for no log 1 for log \n";
     mynmb=stold(argv[1]);
     preci=stoi(argv[2]);
     st_th=stoi(argv[3]);
     v_log=stoi(argv[4]);
     auto_v=stoi(argv[5]);
-    eqdg->fcnt(0,mynmb,preci,1);
+    v_bee_log=stoi(argv[6]);
+    cout<<"with main number "<<std::setprecision(preci) << mynmb <<"\n";
+    if(v_log==0){eqdg->fcnt(0,mynmb,preci,1,0);}
+    if(v_log==1){eqdg->fcnt(0,mynmb,preci,1,1);}
     cout<<eqdg->mnarcnt<<"\n";
     int ar_one[4]={9,25,34,16};
     int ar_two[4]={9,26,35,17};
     int ar_three[4]={10,25,35,15};
     int ar_four[4]={10,26,36,16};
-    cout<<"with main number "<<std::setprecision(preci) << mynmb <<"\n";
+    cout<<" @ CDIS : with main number "<<std::setprecision(preci) << mynmb <<"\n";
     get_the_sum *gti=new get_the_sum();
     cdis[cs]=gti->get_da_number(mynmb,1,preci);
     cout<<"Main cdi " << cdis[cs] <<"\n";
@@ -554,12 +638,12 @@ int main(int argc,char** argv)
     long double lt_main;
     long double lt;
     cout<<"\n";
-    if(auto_v==1){lt_main=fnl_weirdo[0];
+    if(auto_v==1){lt_main=appro_auto;
                   cout<<"auto value is "<<lt_main <<"\n";
                   std::this_thread::sleep_for(std::chrono::milliseconds(1500));
                  }
     if(auto_v==0){cout<<"enter a number from above \n";
-    cin>>lt_main;}
+                  cin>>lt_main;}
     cout<<"lenght of " <<std::setprecision(preci)<< lt_main <<" " ;
     lt=gti->get_da_number(lt_main,2,preci);
     int k=gti->gt_leng;
@@ -571,7 +655,6 @@ int main(int argc,char** argv)
     long double abqr;
     int psif=1;
     int ps_ask;
-
     if(auto_v==0){cout<<"default 4 loops enter 4 or more [4 is 3] \n";
                   cout<<"suggested value : " << k+1 <<"\n";
                   cin>>ps_ask;
@@ -580,13 +663,13 @@ int main(int argc,char** argv)
                   cout<<"moving with ps_ask " << ps_ask <<"\n";
                   std::this_thread::sleep_for(std::chrono::milliseconds(1500));
                  }
+    part_of *ptr=new part_of();
+    long double baqr;
     for(;;){
         cout<<"-------------------------------------------------------\n";
         cout<<"times " << psif <<" ";
         prt->get_the_part(lt_main,psif-1,preci);
         abqr=prt->qrt;
-        part_of *ptr=new part_of();
-        long double baqr;
         ptr->get_the_part(mynmb,psif-1,preci);
         baqr=ptr->qrt;
         cout<<std::setprecision(preci)<<ptr->rtv << " " <<std::setprecision(preci)<< prt->rtv <<"\n";
@@ -692,18 +775,42 @@ int main(int argc,char** argv)
         if(psif==ps_ask){break;}
         cout<<"-------------------------------------------------------\n";
     }
+    cout<<"\n";
+    cout<<"\n";
     show_vcc(lt_main);
-    
-    
-    int x_stp=0;
-    long double tmpf;
     bee_cls *bee = new bee_cls();
+    cout<<"\n";
+    cout<<"\n";
+    cout<<"------------------------Bee-----------------------------\n";
     for(;;){
-        cout<<"enter one of the approximated number from above \n";
-        cin>>tmpf;
-        cout<<"entering with "<< std::setprecision(preci)<<tmpf <<"\n";
-        bee->bee_man(mynmb,tmpf,preci,v_log);
-        cout<<"enter 1 to exit "    
+
+        if(auto_v==0){
+            cout<<"enter one of the approximated number from above \n";
+            cin>>bee_tmpf;
+            cout<<"enter log level 0 or 1\n";
+            cin>>v_bee_log;
+            cout<<"entering with "<< std::setprecision(preci)<<bee_tmpf <<" and log of bee " << v_bee_log <<"\n";
+            bee->bee_man(mynmb,bee_tmpf,preci,v_bee_log);
+            bee->bee_show(preci);
+            cout<<"enter 1 to exit \n";
+            cin>>bee_x_stp;
+        }
+        
+       
+        if(auto_v==1){
+        
+           for(auto it=0;it<=for_the_bee.size()-1;it++){
+        
+                bee->bee_man(mynmb)
+                bee_x_stp=1;
+            
+           }
+        
+        }
+        if(bee_x_stp==1){break;}
+        if(bee_x_stp!=1){
+           cout<<"-------------------------------------------------\n";
+        }
     }
     return 0;
 }

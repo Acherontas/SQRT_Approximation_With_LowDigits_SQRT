@@ -14,7 +14,7 @@
 	<iostream>
 	<iomanip>
 
-1753765775 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/main.cpp
+1753956220 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/main.cpp
 	<iostream>
 	<math.h>
 	<iomanip>
@@ -48,22 +48,25 @@
 	<iostream>
 	<iomanip>
 
-1753693582 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/eql_digits_cnt.cpp
+1753943914 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/eql_digits_cnt.cpp
 	"eql_digits_cnt.h"
 
-1753692872 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/eql_digits_cnt.h
+1753943187 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/eql_digits_cnt.h
 	<string>
 	<math.h>
 	<iomanip>
 	<iostream>
 
-1753765956 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/bee_cls.h
+1753956037 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/bee_cls.h
 	<string>
 	<math.h>
 	<iomanip>
 	<thread>
 	<iostream>
+	"eql_digits_cnt.h"
+	<bits/stdc++.h>
+	<vector>
 
-1753765894 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/bee_cls.cpp
+1753956167 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/bee_cls.cpp
 	"bee_cls.h"
 

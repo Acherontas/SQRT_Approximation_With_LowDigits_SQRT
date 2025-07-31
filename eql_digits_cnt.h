@@ -16,7 +16,7 @@ class eql_digits_cnt
         int f_cnt;
         int mn_ar[1000];
         int mnarcnt=0;
-        int fcnt(long double mn,long double da_number,int prc,int logic);
+        int fcnt(long double mn,long double da_number,int prc,int logic,int log_lvl);
     protected:
 
     private:

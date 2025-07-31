@@ -1,6 +1,7 @@
 #include "bee_cls.h"
 
-bee_cls::bee_cls(bee_cls)
+using namespace std;
+bee_cls::bee_cls()
 {
     //ctor
 }
@@ -22,19 +23,46 @@ bee_cls& bee_cls::operator=(const bee_cls& rhs)
     return *this;
 }
 
-bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
-    int rtr=0;
+
+void bee_cls::bee_show(int lxpre){
+ long double prw;
+ long double rst;
+ int psi;
+ cout<<"--------------------------------------\n";
+ for(auto io=0;io<=this->da_psifia.size()-1;io++){
+    cout<<"psifia " << std::setprecision(lxpre)<<this->da_psifia[io] << " ";
+    cout<<"PWR "<<std::setprecision(lxpre)<<this->da_pwrs[io] <<" \n";
+    cout<<" ------------> RESULT "<<std::setprecision(lxpre)<<this->da_rsts[io] <<"\n";
+    cout<<" ------------> DIAFORA "<<std::setprecision(lxpre)<<this->dfr[io] <<"\n";
+    cout<<" ------------> DIAIRESI main/result " << std::setprecision(lxpre)<<this->da_dr[io]<<"\n";
+ }
+ cout<<"--------------------------------------\n";
+}
+
+int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
+    //int rtr=0;
+    this->rtr=0;
+    this->da_pwrs.clear();
+    this->da_rsts.clear();
+    this->da_psifia.clear();
     cout<<"first number second number is the qube one dimension and third the precision \n";
-    int lxpre=-1;;
+    int lxpre=-1;
     long double first,second,rst;
+    eql_digits_cnt *b_d=new eql_digits_cnt();
+    int f_dit=0;
     first=fr;
     second=sc;
     lxpre=rts;
-    rst=first/second;
+    if(logl==0){b_d->fcnt(0,first,lxpre,1,0);}
+    if(logl==1){b_d->fcnt(0,first,lxpre,1,1);}
+    f_dit=b_d->mnarcnt;
+    cout<<"Main Number " <<std::setprecision(lxpre)<<first << " has number of digits " << f_dit <<"\n";
+    cout<<"Using Power of " <<std::setprecision(lxpre)<<second << "\n";
+    rst=(long double)first/(long double)second;
     long double fr_f,int_f,fr_s,int_s,fr_rs,int_rsl;
-    fr_f=modf(first,&int_f);
-    fr_s=modf(second,&int_s);
-    fr_rs=modf(rst,&int_rsl);
+    fr_f=modfl(first,&int_f);
+    fr_s=modfl(second,&int_s);
+    fr_rs=modfl(rst,&int_rsl);
     cout<<"\n";
     cout<<"first " << std::setprecision(lxpre) << int_f << " \n";
     cout<<"     doted " <<std::setprecision(lxpre) << fr_f << "\n";
@@ -89,7 +117,7 @@ bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
     long double recheck_them;
     recheck_them=second*second;
     long double frck,intck;
-    frck=modf(recheck_them,&intck);
+    frck=modfl(recheck_them,&intck);
     cout<<"recheck values of " << second << " and result of " << recheck_them << " with intpart " << intck <<"\n";
     cout<<"\n";
     if(intck>first){
@@ -98,21 +126,47 @@ bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
       if(logl==1){cout<<"lowering second to value of " << second <<"\n"; cout<<"\n";}
       second=second-1;
     }
+    int insr=0;int st=0;int fbd=0;
     for(;;){
         if(logl==1){cout<<"     ----> using " <<std::setprecision(lxpre) << newd ;
                        //cout<<" with string " << mn_string;
-                      }
-        nr_lw=newd/2;
+                   }
+        nr_lw=(long double)newd/(long double)2;
         tms+=1;
         if(logl==1){cout<<" rst is " <<std::setprecision(lxpre)<< nr_lw <<"\n";}
         da_rst=-1;
         frck=modf(nr_lw,&intck);
-        if(logl==1){cout <<"     ----> using " << nr_lw <<" with intpart " << intck <<" and fract " << frck <<"\n";}
+        if(logl==1){cout <<"     ----> using " <<std::setprecision(lxpre)<< nr_lw <<" with intpart " <<std::setprecision(lxpre)<< intck <<" and fract " <<std::setprecision(lxpre)<< frck <<"\n";}
         da_rst=second+frck;
         da_sq_rst=da_rst*da_rst;
-        fr_da=modf(da_sq_rst,&int_da);
+        fr_da=modfl(da_sq_rst,&int_da);
+        if(logl==1){cout<<"trying to retrieve digits \n";b_d->fcnt(0,int_da,lxpre,0,1);}
+        if(logl==0){b_d->fcnt(0,int_da,lxpre,0,0);}
+        fbd=b_d->f_cnt;
+        if(logl==1){cout<<"digits retrieved "<< fbd <<"\n";}
+        if(insr>0 && st==1){
+            if(insr>fbd){
+                this->da_psifia.push_back(fbd);
+                this->da_pwrs.push_back(da_rst);
+                this->da_rsts.push_back(da_sq_rst);
+                if(da_sq_rst<first){drf=first-da_sq_rst; this->dfr.push_back(drf);}
+                if(da_sq_rst>first){drf=da_sq_rst-first; this->dfr.push_back(drf);}
+                this->da_dr.push_back((long double)first/(long double)da_sq_rst);
+                insr=fbd;
+            }
+        }
+        if(insr==0 && st==0){
+                            this->da_psifia.push_back(fbd);
+                            this->da_pwrs.push_back(da_rst);
+                            this->da_rsts.push_back(da_sq_rst);
+                            if(da_sq_rst<first){drf=first-da_sq_rst; this->dfr.push_back(drf);}
+                            if(da_sq_rst>first){drf=da_sq_rst-first; this->dfr.push_back(drf);}
+                            this->da_dr.push_back((long double)first/(long double)da_sq_rst);
+                            insr=fbd;
+                            st=1;
+                            }
         if(logl==1){
-          cout<<"                     with combination da_rst " << da_rst << " sq of rst " << da_sq_rst << "\n";
+          cout<<"                     with combination da_rst " <<std::setprecision(lxpre)<< da_rst << " sq of rst " << da_sq_rst << "\n";
           cout<<"                     with intpart " << int_da << " and other part " << fr_da <<"\n";
         }
         if(int_da==first){
@@ -126,7 +180,7 @@ bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
         cout<<"     power result is  " <<std::setprecision(lxpre) <<da_rst << "\n";
         cout<<"     with result of the power * power  " <<std::setprecision(lxpre)<< da_sq_rst <<"\n";
         cout<<"\n";
-        rtr=1;
+        this->rtr=1;
         }
         int_string.clear();
         int_string+=to_string(nr_lw);
@@ -152,9 +206,8 @@ bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
         }
         if(lx==1){newd=nr_lw;}
         if(stop==1){break;}
-        if(rtr==1){break;}
-    
+        if(this->rtr==1){break;}
      }
-
-
+//bee_show(lxpre);
+     return 0;
 }

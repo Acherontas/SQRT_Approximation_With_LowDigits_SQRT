@@ -1,5 +1,6 @@
 #include "eql_digits_cnt.h"
 
+
 eql_digits_cnt::eql_digits_cnt()
 {
     //ctor
@@ -22,15 +23,17 @@ eql_digits_cnt& eql_digits_cnt::operator=(const eql_digits_cnt& rhs)
     return *this;
 }
 
-int eql_digits_cnt::fcnt(long double mn,long double da_number,int prc,int logic)
+int eql_digits_cnt::fcnt(long double mn,long double da_number,int prc,int logic,int log_lvl)
 {
     char ck;
     int lk;
     stringstream mnp;
     mnp<<std::setprecision(prc)<<da_number;
+    if(log_lvl==1){cout<<"will count the digit from " <<std::setprecision(prc)<< mnp.str() <<"\n";}
     string slk;
     slk.clear();
     slk+=mnp.str();
+    if(log_lvl==1){cout<<"with string of it " << slk <<"\n";}
     int brk=0;
     this->f_cnt=0;
     for(int i=0;i<=slk.size()-1;i++){
