@@ -1,6 +1,19 @@
 #include "bee_cls.h"
 
 using namespace std;
+
+
+        vector<long double> da_pwrs;
+        vector<long double> da_rsts;
+        vector<long double> dfr;
+        vector<long double> da_dr;
+        vector<string> all_s;
+        string sal;
+        long double drf;
+        vector<int> da_psifia;
+        int rtr=0;
+
+
 bee_cls::bee_cls()
 {
     //ctor
@@ -24,27 +37,25 @@ bee_cls& bee_cls::operator=(const bee_cls& rhs)
 }
 
 
-void bee_cls::bee_show(int lxpre){
- long double prw;
- long double rst;
- int psi;
+int bee_cls::bee_show(int lxpre){
  cout<<"--------------------------------------\n";
- for(auto io=0;io<=this->da_psifia.size()-1;io++){
-    cout<<"psifia " << std::setprecision(lxpre)<<this->da_psifia[io] << " ";
-    cout<<"PWR "<<std::setprecision(lxpre)<<this->da_pwrs[io] <<" \n";
-    cout<<" ------------> RESULT "<<std::setprecision(lxpre)<<this->da_rsts[io] <<"\n";
-    cout<<" ------------> DIAFORA "<<std::setprecision(lxpre)<<this->dfr[io] <<"\n";
-    cout<<" ------------> DIAIRESI main/result " << std::setprecision(lxpre)<<this->da_dr[io]<<"\n";
+ cout<<"Psifia,Power,Result of Power,Diafora from Main,Diairesi from Main\n";
+ cout<<"--------------------------------------\n";
+ for(auto ip=0;ip<=all_s.size()-1;ip++){
+    std::this_thread::sleep_for(std::chrono::milliseconds(lxpre));
+    cout<<all_s[ip] << " \n";
  }
  cout<<"--------------------------------------\n";
+    sal.clear();
+    all_s.clear();
+    rtr=0;
+    drf=0;
+ return 0;
 }
 
 int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
-    //int rtr=0;
-    this->rtr=0;
-    this->da_pwrs.clear();
-    this->da_rsts.clear();
-    this->da_psifia.clear();
+    rtr=0;
+    drf=0;
     cout<<"first number second number is the qube one dimension and third the precision \n";
     int lxpre=-1;
     long double first,second,rst;
@@ -95,7 +106,7 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
             break;}
             }
             xp+=1;
-    std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+    std::this_thread::sleep_for(std::chrono::milliseconds(lxpre));
     cout<<"\n";
     cout<<"for the integer string " <<std::setprecision(lxpre)  << last_digit << "\n";
     cout<<"the numbers are " <<std::setprecision(lxpre) << xp <<"\n";
@@ -117,6 +128,7 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
     long double recheck_them;
     recheck_them=second*second;
     long double frck,intck;
+    long double ddddr;
     frck=modfl(recheck_them,&intck);
     cout<<"recheck values of " <<std::setprecision(lxpre)<< second << " and result of " <<std::setprecision(lxpre)<< recheck_them << " with intpart " <<std::setprecision(lxpre)<< intck <<"\n";
     cout<<"\n";
@@ -128,6 +140,8 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
     }
     int insr=0;int st=0;int fbd=0;
     for(;;){
+        drf=0;
+        std::this_thread::sleep_for(std::chrono::milliseconds(lxpre));
         if(logl==1){cout<<"     ----> using " <<std::setprecision(lxpre) << newd ;
                        //cout<<" with string " << mn_string;
                    }
@@ -146,24 +160,58 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
         if(logl==1){cout<<"digits retrieved "<< fbd <<"\n";}
         if(insr>0 && st==1){
             if(insr>fbd){
-                this->da_psifia.push_back(fbd);
-                this->da_pwrs.push_back(da_rst);
-                this->da_rsts.push_back(da_sq_rst);
-                if(da_sq_rst<first){drf=first-da_sq_rst; this->dfr.push_back(drf);}
-                if(da_sq_rst>first){drf=da_sq_rst-first; this->dfr.push_back(drf);}
-                this->da_dr.push_back((long double)first/(long double)da_sq_rst);
+                //da_psifia.push_back(fbd);
+                //da_pwrs.push_back(da_rst);
+                //da_rsts.push_back(da_sq_rst);
+                drf=0;
+                if(da_sq_rst<first){drf=first-da_sq_rst;
+                                    //dfr.push_back(drf);
+                                    }
+                if(da_sq_rst>first){drf=da_sq_rst-first;
+                                    //dfr.push_back(drf);
+                                    }
+                ddddr=(long double)first/(long double)da_sq_rst;
+                //da_dr.push_back(ddddr);
                 insr=fbd;
+                sal.clear();
+                sal+=to_string(fbd);
+                sal+=" ";
+                sal+=to_string(da_rst);
+                sal+=" ";
+                sal+=to_string(da_sq_rst);
+                sal+=" ";
+                sal+=to_string(drf);
+                sal+=" ";
+                sal+=to_string(ddddr);
+                all_s.push_back(sal);
             }
         }
         if(insr==0 && st==0){
-                            this->da_psifia.push_back(fbd);
-                            this->da_pwrs.push_back(da_rst);
-                            this->da_rsts.push_back(da_sq_rst);
-                            if(da_sq_rst<first){drf=first-da_sq_rst; this->dfr.push_back(drf);}
-                            if(da_sq_rst>first){drf=da_sq_rst-first; this->dfr.push_back(drf);}
-                            this->da_dr.push_back((long double)first/(long double)da_sq_rst);
+                            //da_psifia.push_back(fbd);
+                            //da_pwrs.push_back(da_rst);
+                            //da_rsts.push_back(da_sq_rst);
+                            drf=0;
+                            if(da_sq_rst<first){drf=first-da_sq_rst;
+                                                //dfr.push_back(drf);
+                                                }
+                            if(da_sq_rst>first){drf=da_sq_rst-first;
+                                                //dfr.push_back(drf);
+                                                }
+                            ddddr=(long double)first/(long double)da_sq_rst;
+                            //da_dr.push_back(ddddr);
                             insr=fbd;
                             st=1;
+                            sal.clear();
+                            sal+=to_string(fbd);
+                            sal+=" ";
+                            sal+=to_string(da_rst);
+                            sal+=" ";
+                            sal+=to_string(da_sq_rst);
+                            sal+=" ";
+                            sal+=to_string(drf);
+                            sal+=" ";
+                            sal+=to_string(ddddr);
+                            all_s.push_back(sal);
                             }
         if(logl==1){
           cout<<"                     with combination da_rst " <<std::setprecision(lxpre)<< da_rst << " sq of rst " <<std::setprecision(lxpre)<< da_sq_rst << "\n";
@@ -180,7 +228,7 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
         cout<<"     power result is  " <<std::setprecision(lxpre) <<da_rst << "\n";
         cout<<"     with result of the power * power  " <<std::setprecision(lxpre)<< da_sq_rst <<"\n";
         cout<<"\n";
-        this->rtr=1;
+        rtr=1;
         }
         int_string.clear();
         int_string+=to_string(nr_lw);
@@ -206,7 +254,7 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
         }
         if(lx==1){newd=nr_lw;}
         if(stop==1){break;}
-        if(this->rtr==1){break;}
+        if(rtr==1){break;}
      }
 //bee_show(lxpre);
      return 0;
