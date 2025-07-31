@@ -21,8 +21,6 @@ Aborted
 "
 
 increasing the precision seems to fix it 
-
-"segmentation fault" lower the digits 
 //////////////////
 
 for any information contact me 
