@@ -49,6 +49,8 @@ using namespace std;
     long double bee_tmpf;
     int v_bee_log=-1;
     long double appro_auto;
+    int xli=0;
+    int sxli=0;
 
 int check_sqrt(long double mani,long double ep,long double dd,long double st,long double sh,long double shep,long double shdd,long double ddd,long double ddf)
 {
@@ -192,7 +194,6 @@ int check_sqrt(long double mani,long double ep,long double dd,long double st,lon
 }
 
 void show_xl(){
-  int xli=0;
   if(v_log==1){cout<<"reporting size of xl vector " << xl.size()-1 <<" " << xl.capacity() <<"\n";}
   for(auto it=0;it<=xl.size()-1;it++)
   {
@@ -204,8 +205,6 @@ void show_xl(){
             cout<<  " of " <<std::setprecision(preci)<< lx[it] << " ^2 ::== " <<std::setprecision(preci)<< x_dv << " as intpart " <<std::setprecision(preci)<< xl[it] <<"  diafora " <<std::setprecision(preci) << dif << " from " << std::setprecision(preci) << mynmb <<"\n";
                 }
     xpl.push_back(dif);
-    //xli+=1;
-    //if(xli%2==0){cout<<"\n";}
   }
 }
 
@@ -476,6 +475,7 @@ void show_vcc(long double entered){
   long double pwrd;
   for(auto ito=0;ito<=v_cc.size()-1;ito+=1)
   {
+     cout<<"\n";
      std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
      xlk=v_cc[ito]*v_cc[ito];
      if(v_log==0){eqdg->fcnt(0,xlk,preci,0,0);}
@@ -502,25 +502,33 @@ void show_vcc(long double entered){
   cout<<"\n";
   cout<<"-------------------------Approximation Result Set-----------------------------------------------------\n";
   if(mynmb<=xlk){
+  cout<<"\n";
   cout<<"possible approximation < ::== " <<std::setprecision(preci)<< tmp_vl << " ^2 " <<std::setprecision(preci)<< xlk << " ";
   cout<<"              me idia psifia " <<std::setprecision(preci)<< tmp_eq << " ";
   cout<<"              me diafora "<<std::setprecision(preci)<< tmp_min <<"\n";
   for_the_bee.push_back(tmp_vl);
+  cout<<"\n";
   }
   if(xlk>=mynmb){
+  cout<<"\n";
   cout<<"possible approximation > ::== " <<std::setprecision(preci)<< tmp_vl << " ^2 " <<std::setprecision(preci)<< xlk << " ";
   cout<<"              me idia psifia " <<std::setprecision(preci)<< tmp_eq << " ";
   cout<<"              me diafora "<<std::setprecision(preci)<< tmp_min <<"\n";
   for_the_bee.push_back(tmp_vl);
+  cout<<"\n";
   }
   if(mynmb>=xlk){
+  cout<<"\n";
   cout<<"possible approximation > ::== " <<std::setprecision(preci)<< tmp_vl << " ^2 " << std::setprecision(preci)<<xlk << " ";
   cout<<"            me idia psifia " <<std::setprecision(preci)<< tmp_eq << " ";
   cout<<"            me diafora "<<std::setprecision(preci)<< tmp_min <<"\n";
   for_the_bee.push_back(tmp_vl);
+  cout<<"\n";
   }
   //bee_tmpf=tmp_vl;
+  xli=0;
   while(xlk<=mynmb){
+     cout<<"\n";
      std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
      tmp_vl=tmp_vl+1;
      xlk=tmp_vl*tmp_vl;
@@ -537,10 +545,14 @@ void show_vcc(long double entered){
         cout<<"will pass value of "<< bee_tmpf <<"\n"; break;}
      if(xlk==mynmb){ent+=1; bee_tmpf=tmp_vl;
         cout<<"will pass value of "<< bee_tmpf <<"\n"; break;}
+     xli+=1;
+     if(xli==sxli){break;}
   }
+  xli=0;
   if(ent==0){
-  cout<<"----removing using main number " << mynmb <<"\n";
+  cout<<"----removing using main number " <<std::setprecision(preci)<< mynmb <<"\n";
   while(xlk>mynmb){
+     cout<<"\n";
      std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
      tmp_vl=tmp_vl-1;
      xlk=tmp_vl*tmp_vl;
@@ -559,6 +571,8 @@ void show_vcc(long double entered){
         cout<<"will pass value of "<< bee_tmpf <<"\n";
         break;
         }
+        xli+=1;
+        if(xli==sxli){break;}
   }
   }
   cout<<"\n";
@@ -568,12 +582,14 @@ int main(int argc,char** argv)
 {
     cout<<"voyeristic behaviours and others have fun \n";
     cout<<"ur number ,ur precision , ur sleep time , ur log ,ur automation 0 no 1 auto , ur bee auto 0 for no log 1 for log \n";
+    cout<<"the approximation while loops times to run if -1 infinite loop will occur until other equations gets equal \n";
     mynmb=stold(argv[1]);
     preci=stoi(argv[2]);
     st_th=stoi(argv[3]);
     v_log=stoi(argv[4]);
     auto_v=stoi(argv[5]);
     v_bee_log=stoi(argv[6]);
+    sxli=stoi(argv[7]);
     cout<<"with main number "<<std::setprecision(preci) << mynmb <<"\n";
     if(v_log==0){eqdg->fcnt(0,mynmb,preci,1,0);}
     if(v_log==1){eqdg->fcnt(0,mynmb,preci,1,1);}
@@ -719,7 +735,7 @@ int main(int argc,char** argv)
         fractpart=modf(mynmb,&intpart);
         cout<<" trying to reach the main number " << std::setprecision(preci)<<mynmb <<" ";
         ptr->get_the_part(intpart,-1,preci);
-        int mad=ptr->all_length;
+        int mad=ptr->all_length; //main doesnt have a dot
         int mpd=ptr->dot_pos;
         int mlap=(ad-1)-pd;
         cout<<" main number intpart lenght " << mad << " \n"; // dot length " << mpd << " after dot " << mlap <<"\n";
@@ -737,28 +753,34 @@ int main(int argc,char** argv)
           cout<<"closest power of 2 for "<< std::setprecision(preci)<<mynmb << " is " << std::setprecision(preci)<<rst_f <<"\n";
           xstp=2;
         }
-        cout<<"before loop xstp is " << xstp <<"\n";
+        cout<<"before loop xstp is " << xstp <<"entering tens with lap of value " << lap <<"\n";
         int lshow=0;int xbrk=0;int rts=0;
         if(xstp==0){
-            for(int i=0;i<=lap;i++){
+            for(;;){ //int i=0;i<=lap;i++
                 std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
                 lshow=0;
                 t_rst=adb*t_ten;
                 rst_f=t_rst*t_rst;
+                if(v_log==1){cout<<"using t_rst as "<<t_rst <<"\n";}
                 if(v_log==1){cout<<"using for fract " << rst_f <<"\n";}
-                frc=modf(rst_f,&intprt);
+                frc=modfl(rst_f,&intprt);
                 if(rts!=3){
                     cout<<"getting the part of " << rst_f <<" :: ";
                     ptr->get_the_part(intprt,-1,preci);
-                    ad=ptr->all_length;
+                    ad=ptr->all_length; //the lenght of intpart of current floatted possibly number
                     pd=ptr->dot_pos;
                     cout<<"ad " << ad << " and mad " << mad <<"\n";
                     rts=ad-mad;
                 }
-                if(ad==mad || ad-mad==1 || ad-mad==2 || ad-mad==3){
-                   cout<<"i push_back a near value \n";
-                   frc=modf(t_rst,&intprt);
+                if(ad>mad){cout<<"have to exit bigger lenght with ad "<< ad <<" and mad "<< mad <<"\n";xbrk=1;}
+                if(ad==mad || ad-mad==1 ||  mad-ad==1 || mad==ad)
+                //ad-mad==2 || ad-mad==3 || || mad-ad==2 || mad-ad==3
+                {
+                   cout<<"i push_back a near value of ";
+                   frc=modfl(t_rst,&intprt);
                    v_cc.push_back(intprt);
+                   cout<<std::setprecision(preci)<<intprt <<"\n";
+                   cout<<"stopping with ad " << ad << " and mad of "<< mad <<"\n";
                    lshow=0;
                    xbrk=1;
                 }
@@ -781,8 +803,14 @@ int main(int argc,char** argv)
                 }
                 t_ten=t_ten*10;
                 if(v_log==1){cout<<"t_ten increased \n";}
-                if(xstp!=0){break;}
-                if(xbrk==1){break;}
+                if(xstp!=0){
+                            cout<<"breaking with xstp of value " << xstp <<"\n";
+                            break;
+                           }
+                if(xbrk==1){
+                            cout<<"breaking with xbrk of value "<< xbrk <<"\n";
+                            break;
+                            }
             }
         }
         cout<<"\n";
