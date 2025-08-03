@@ -2,40 +2,16 @@
 
 using namespace std;
 
-
-        vector<long double> da_pwrs;
-        vector<long double> da_rsts;
-        vector<long double> dfr;
-        vector<long double> da_dr;
         vector<string> all_s;
         string sal;
         long double drf;
         vector<int> da_psifia;
         int rtr=0;
-
-
-bee_cls::bee_cls()
-{
-    //ctor
-}
-
-bee_cls::~bee_cls()
-{
-    //dtor
-}
-
-bee_cls::bee_cls(const bee_cls& other)
-{
-    //copy ctor
-}
-
-bee_cls& bee_cls::operator=(const bee_cls& rhs)
-{
-    if (this == &rhs) return *this; // handle self assignment
-    //assignment operator
-    return *this;
-}
-
+bee_cls::bee_cls(){}//ctor
+bee_cls::~bee_cls(){}//dtor
+bee_cls::bee_cls(const bee_cls& other){}//copy ctor
+bee_cls& bee_cls::operator=(const bee_cls& rhs)// handle self assignment//assignment operator
+{if (this == &rhs) return *this; return *this;}
 
 int bee_cls::bee_show(int lxpre){
  cout<<"--------------------------------------\n";
@@ -54,13 +30,13 @@ int bee_cls::bee_show(int lxpre){
 }
 
 int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
-    rtr=0;
-    drf=0;
+    rtr=0;lxpre=-1; first=0,second=0,rst=0; f_dit=0;xp=-1;lk=0;
+    drf=0;fr_f=0,int_f=0,fr_s=0,int_s=0,fr_rs=0,int_rsl=0; get_dfr=0;
+    newd=0,new_int_t=-1,nr_lw=0;myfunc=-1,xpp=1,stop=-1,status=-1,lx=1,tmp_lk=-1,tms=0,go_down=0;
+    da_rst=0,da_sq_rst=0,fr_da=0,int_da=0;recheck_them=0; frck=0,intck=0; ddddr=0;
+    insr=0;st=0;fbd=0;
     cout<<"first number second number is the qube one dimension and third the precision \n";
-    int lxpre=-1;
-    long double first,second,rst;
     eql_digits_cnt *b_d=new eql_digits_cnt();
-    int f_dit=0;
     first=fr;
     second=sc;
     lxpre=rts;
@@ -70,7 +46,6 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
     cout<<"Main Number " <<std::setprecision(lxpre)<<first << " has number of digits " << f_dit <<"\n";
     cout<<"Using Power of " <<std::setprecision(lxpre)<<second << "\n";
     rst=(long double)first/(long double)second;
-    long double fr_f,int_f,fr_s,int_s,fr_rs,int_rsl;
     fr_f=modfl(first,&int_f);
     fr_s=modfl(second,&int_s);
     fr_rs=modfl(rst,&int_rsl);
@@ -86,7 +61,6 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
     cout<<"result " <<std::setprecision(lxpre) << int_rsl << " \n";
     cout<<"     doted " <<std::setprecision(lxpre) << fr_rs << " \n";
     cout<<"     makes " <<std::setprecision(lxpre) << rst <<"\n";
-    long double get_dfr;
     if(int_s>int_rsl){get_dfr=int_s-int_rsl;}
     if(int_s<int_rsl){get_dfr=int_rsl-int_s;}
     cout<<"\n";
@@ -95,9 +69,6 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
     string last_digit;
     last_digit.clear();
     last_digit+=to_string(int_rsl);
-    int xp=-1;
-    char mk;
-    int lk;
     for(int i=0;i<=last_digit.size()-1;i++){
             if(last_digit.at(i)!=*"."){xp+=1;}
             if(last_digit.at(i)==*"."){
@@ -113,22 +84,16 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
     cout<<"the retrievable integer digit is " <<std::setprecision(lxpre) << lk <<"\n";
     cout<<"\n";
     //lowering
-    long double newd,new_int_t=-1,nr_lw;
     new_int_t=lk;
     newd=new_int_t+fr_rs;
     cout<<"entering with number of " <<std::setprecision(lxpre) <<newd <<"\n";
-    int myfunc=-1,xpp=1,stop=-1,status=-1,lx=1,tmp_lk=-1,tms=0,go_down=0;
     string int_string;string mn_string;
     mn_string.clear();
     mn_string+=to_string(newd);
     tmp_lk=lk;
-    long double da_rst,da_sq_rst,fr_da,int_da;
     //sometimes the value of power of the second is bigger than the first so we use the second-1;
     //so we recheck
-    long double recheck_them;
     recheck_them=second*second;
-    long double frck,intck;
-    long double ddddr;
     frck=modfl(recheck_them,&intck);
     cout<<"recheck values of " <<std::setprecision(lxpre)<< second << " and result of " <<std::setprecision(lxpre)<< recheck_them << " with intpart " <<std::setprecision(lxpre)<< intck <<"\n";
     cout<<"\n";
@@ -138,7 +103,6 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
       if(logl==1){cout<<"lowering second to value of " <<std::setprecision(lxpre)<< second <<"\n"; cout<<"\n";}
       second=second-1;
     }
-    int insr=0;int st=0;int fbd=0;
     for(;;){
         drf=0;
         std::this_thread::sleep_for(std::chrono::milliseconds(lxpre));
@@ -160,18 +124,12 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
         if(logl==1){cout<<"digits retrieved "<< fbd <<"\n";}
         if(insr>0 && st==1){
             if(insr>fbd){
-                //da_psifia.push_back(fbd);
-                //da_pwrs.push_back(da_rst);
-                //da_rsts.push_back(da_sq_rst);
                 drf=0;
                 if(da_sq_rst<first){drf=first-da_sq_rst;
-                                    //dfr.push_back(drf);
                                     }
                 if(da_sq_rst>first){drf=da_sq_rst-first;
-                                    //dfr.push_back(drf);
                                     }
                 ddddr=(long double)first/(long double)da_sq_rst;
-                //da_dr.push_back(ddddr);
                 insr=fbd;
                 sal.clear();
                 sal+=to_string(fbd);
@@ -187,18 +145,12 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
             }
         }
         if(insr==0 && st==0){
-                            //da_psifia.push_back(fbd);
-                            //da_pwrs.push_back(da_rst);
-                            //da_rsts.push_back(da_sq_rst);
                             drf=0;
                             if(da_sq_rst<first){drf=first-da_sq_rst;
-                                                //dfr.push_back(drf);
                                                 }
                             if(da_sq_rst>first){drf=da_sq_rst-first;
-                                                //dfr.push_back(drf);
                                                 }
                             ddddr=(long double)first/(long double)da_sq_rst;
-                            //da_dr.push_back(ddddr);
                             insr=fbd;
                             st=1;
                             sal.clear();
@@ -228,6 +180,25 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
         cout<<"     power result is  " <<std::setprecision(lxpre) <<da_rst << "\n";
         cout<<"     with result of the power * power  " <<std::setprecision(lxpre)<< da_sq_rst <<"\n";
         cout<<"\n";
+                            sal.clear();
+                            sal+="**FOUND** ";
+                            sal+="using ";
+                            sal+=to_string(newd);
+                            sal+=" ";
+                            sal+=to_string(nr_lw);
+                            sal+=" /i run times: ";
+                            sal+=to_string(tms);
+                            sal+=" i just go down: ";
+                            sal+=to_string(go_down);
+                            sal+=" / for ur number ";
+                            sal+=to_string(first);
+                            sal+="  |power result is ";
+                            sal+=to_string(da_rst);
+                            sal+="  | ";
+                            sal+=to_string(da_sq_rst);
+                            all_s.push_back(sal);
+
+
         rtr=1;
         }
         int_string.clear();

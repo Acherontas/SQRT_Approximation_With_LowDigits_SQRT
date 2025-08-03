@@ -17,7 +17,18 @@ class bee_cls
         virtual ~bee_cls();
         bee_cls(const bee_cls& other);
         bee_cls& operator=(const bee_cls& other);
-
+        int lxpre=-1;int f_dit=0;int xp=-1;int lk;
+        int myfunc=-1,xpp=1,stop=-1,status=-1,lx=1,tmp_lk=-1,tms=0,go_down=0;
+        int insr=0;int st=0;int fbd=0;
+        long double first,second,rst;
+        long double fr_f,int_f,fr_s,int_s,fr_rs,int_rsl;
+        long double get_dfr;
+        long double newd,new_int_t=-1,nr_lw;
+        long double da_rst,da_sq_rst,fr_da,int_da;
+        long double recheck_them;
+        long double frck,intck;
+        long double ddddr;
+        char mk;
         int bee_man(long double fr,long double sc,int rts,int logl);
         int bee_show(int lxpre);
 

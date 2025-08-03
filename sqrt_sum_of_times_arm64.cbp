@@ -38,6 +38,8 @@
 		<Unit filename="after_the_dot.h" />
 		<Unit filename="bee_cls.cpp" />
 		<Unit filename="bee_cls.h" />
+		<Unit filename="check_sqrti.cpp" />
+		<Unit filename="check_sqrti.h" />
 		<Unit filename="eql_digits_cnt.cpp" />
 		<Unit filename="eql_digits_cnt.h" />
 		<Unit filename="get_the_sum.cpp" />
@@ -45,6 +47,10 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="part_of.cpp" />
 		<Unit filename="part_of.h" />
+		<Unit filename="sqti_cls.cpp" />
+		<Unit filename="sqti_cls.h" />
+		<Unit filename="vcc_part_one.cpp" />
+		<Unit filename="vcc_part_one.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

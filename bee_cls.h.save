@@ -17,14 +17,21 @@ class bee_cls
         virtual ~bee_cls();
         bee_cls(const bee_cls& other);
         bee_cls& operator=(const bee_cls& other);
-        vector<long double> da_pwrs;
-        vector<long double> da_rsts;
-        vector<long double> dfr;
-        vector<long double> da_dr;
-        long double drf;
-        vector<int> da_psifia;
+
+        int lxpre=-1;
+        long double first,second,rst; 
+        int f_dit=0;
+        long double fr_f,int_f,fr_s,int_s,fr_rs,int_rsl; 
+        long double get_dfr;
+        int xp=-1;
+        char mk;
+        int lk;
+        long double newd,new_int_t=-1,nr_lw;int myfunc=-1,xpp=1,stop=-1,status=-1,lx=1,tmp_lk=-1,tms=0,go_down=0;
+    long double da_rst,da_sq_rst,fr_da,int_da;long double recheck_them;long double frck,intck;long double ddddr;
+        
+        
         int bee_man(long double fr,long double sc,int rts,int logl);
-        void bee_show(int lxpre);
+        int bee_show(int lxpre);
 
     protected:
 

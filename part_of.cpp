@@ -27,14 +27,18 @@ long double part_of::get_the_part(long double nbm,int till,int prc){
      string sk;
      sk.clear();
      this->rvt.clear();
+     this->rtv=0;
+     this->qrt=0;
+     this->all_length=0;
+     this->dot_pos=0;
      stringstream ms;
      ms<<std::setprecision(prc)<<nbm;
      sk+=ms.str();
-     char ck; int lk;
-     int all_pos;
-     int tmp_till;
+     char ck; int lk=0;
+     int all_pos=0;
+     int tmp_till=0;
      tmp_till=till;
-     int pd;
+     int pd=0;
      if(till==-1){tmp_till=sk.size()-1;}
      //cout<<"using " << sk << " with " << tmp_till <<"\n";
      for(int i=0;i<=tmp_till;i++){

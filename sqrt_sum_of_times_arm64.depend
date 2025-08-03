@@ -14,7 +14,7 @@
 	<iostream>
 	<iomanip>
 
-1754032915 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/main.cpp
+1754251898 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/main.cpp
 	<iostream>
 	<math.h>
 	<iomanip>
@@ -29,6 +29,9 @@
 	<cmath>
 	"eql_digits_cnt.h"
 	"bee_cls.h"
+	"check_sqrti.h"
+	"sqti_cls.h"
+	"vcc_part_one.h"
 
 1753377268 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/after_the_dot.cpp
 	"after_the_dot.h"
@@ -37,7 +40,7 @@
 	<string.h>
 	<iostream>
 
-1753560335 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/part_of.cpp
+1754144524 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/part_of.cpp
 	"part_of.h"
 
 1753513760 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/part_of.h
@@ -48,7 +51,7 @@
 	<iostream>
 	<iomanip>
 
-1753943914 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/eql_digits_cnt.cpp
+1754141423 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/eql_digits_cnt.cpp
 	"eql_digits_cnt.h"
 
 1753943187 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/eql_digits_cnt.h
@@ -57,7 +60,7 @@
 	<iomanip>
 	<iostream>
 
-1753974439 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/bee_cls.h
+1754252550 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/bee_cls.h
 	<string>
 	<math.h>
 	<iomanip>
@@ -67,6 +70,33 @@
 	<bits/stdc++.h>
 	<vector>
 
-1753975638 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/bee_cls.cpp
+1754252471 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/bee_cls.cpp
 	"bee_cls.h"
+
+1754246862 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/check_sqrti.cpp
+	"check_sqrti.h"
+
+1754246919 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/check_sqrti.h
+	<vector>
+	<iostream>
+	<math.h>
+	<iomanip>
+	<bits/stdc++.h>
+
+1754246450 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/sqti_cls.h
+
+1754246647 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/sqti_cls.cpp
+	"sqti_cls.h"
+	"after_the_dot.h"
+	"check_sqrti.h"
+
+1754250280 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/vcc_part_one.cpp
+	"vcc_part_one.h"
+	"eql_digits_cnt.h"
+
+1754249629 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/vcc_part_one.h
+	<vector>
+	<thread>
+	"part_of.h"
+	<bits/stdc++.h>
 

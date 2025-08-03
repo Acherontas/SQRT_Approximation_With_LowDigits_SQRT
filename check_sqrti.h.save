@@ -1,0 +1,34 @@
+#ifndef CHECK_SQRTI_H
+#define CHECK_SQRTI_H
+
+
+class check_sqrti
+{
+    public:
+        check_sqrti();
+        virtual ~check_sqrti();
+        check_sqrti(const check_sqrti& other);
+        check_sqrti& operator=(const check_sqrti& other);
+        vector<long double> xl;
+        vector<long double> lx;
+        vector<long double> xpl;
+        long double fractpart,intpart;
+        long double ckxlip;
+        long double ckep,ckdd,ckddd,ckddf;
+        long double cksh,ckshep,ckshdd;
+        int      check_sqrt(long double mani,
+                            long double ep,
+                            long double dd,
+                            long double st,
+                            long double sh,
+                            long double shep,
+                            long double shdd,
+                            long double ddd,
+                            long double ddf);
+        int show_xl(int log_level);
+    protected:
+
+    private:
+};
+
+#endif // CHECK_SQRTI_H

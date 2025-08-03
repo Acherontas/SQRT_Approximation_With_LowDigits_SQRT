@@ -1,0 +1,210 @@
+#include "check_sqrti.h"
+
+check_sqrti::check_sqrti(){}//ctor
+check_sqrti::~check_sqrti(){}//dtor
+check_sqrti::check_sqrti(const check_sqrti& other){}//copy ctor
+// handle self assignment//assignment operator
+check_sqrti& check_sqrti::operator=(const check_sqrti& rhs){if (this == &rhs) return *this; return *this;}
+
+int check_sqrti::show_xpl(int lg_lv){
+   int olp=0;
+  if(v_log==1){
+  cout<<"the size of xpl vector is " << xpl.size()-1 <<" "<< xpl.capacity() <<"\n";
+  }
+  stable_sort(xpl.begin(),xpl.end());
+  long double mlp;
+  for(auto i=0;i<=xpl.size()-1;i++){
+     //cout<<xpl[i] <<" ";
+     std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
+     if(xpl[0]+xl[i]==mynmb){
+                x_dv=lx[i]*lx[i];
+                vecl.clear();
+                if(v_log==1){cout<<  " of " <<std::setprecision(preci)<< lx[i] << " ^2 ::== " <<std::setprecision(preci)<< x_dv << " as intpart " <<std::                setprecision(preci)<< xl[i] <<"  diafora " <<std::setprecision(preci) << xpl[0] << " from " << std::setprecision(preci) <<                mynmb <<"\n";
+                }
+                //cout<<"da value " << std::setprecision(preci)<<lx[i] <<" ^2 " << xl[i] <<" diafora " << xpl[0] <<"\n";
+                vecl+=" ";
+                vecl+=to_string(lx[i]);
+                vecl+=" ^2 ::== ";
+                vecl+=to_string(x_dv);
+                vecl+=" as intpart ";
+                vecl+=to_string(xl[i]);
+                vecl+=" diafora ";
+                vecl+=to_string(xpl[0]);
+                vecl+=" from ";
+                vecl+=to_string(mynmb);
+                vecl+=" ";
+                lvec.push_back(vecl);
+                fractpart=modf(lx[i],&intpart);
+                fnl_weirdo.push_back(intpart);
+                }
+     olp+=1;
+  }
+ cout<<"\n";
+ return 0;
+}
+
+
+int check_sqrti::show_xl(int log_level){
+ if(v_log==1){cout<<"reporting size of xl vector " << xl.size()-1 <<" " << xl.capacity() <<"\n";}
+  for(auto it=0;it<=xl.size()-1;it++)
+  {
+    std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
+    if(v_log==1){cout<<"entering amfidromi loop of xl vector  with first \n" ;}
+    dif=mynmb-xl[it];
+    if(v_log==1){
+            x_dv=lx[it]*lx[it];
+            cout<<  " of " <<std::setprecision(preci)<< lx[it] << " ^2 ::== " <<std::setprecision(preci)<< x_dv << " as intpart " <<std::setprecision(preci)<< xl[it] <<"  diafora " <<std::setprecision(preci) << dif << " from " << std::setprecision(preci) << mynmb <<"\n";
+                }
+    xpl.push_back(dif);
+  }
+return 0;
+}
+
+
+int check_sqrti::check_sqrt(long double mani,
+                            long double ep,
+                            long double dd,
+                            long double st,
+                            long double sh,
+                            long double shep,
+                            long double shdd,
+                            long double ddd,
+                            long double ddf)
+{
+
+fractpart=0,intpart=0,ckxlip=0;xl.clear();lx.clear();xpl.clear();
+
+if(isinf(mani) || isinf(ep) || isinf(dd) || isinf(st) || isinf(sh) || isinf(shep) || isinf(shdd) || isinf(ddd) || isinf(ddf))
+  {
+                cout<<"error continue with the rest \n";
+  }
+
+    if(!isinf(ep)){
+         fractpart=modf(ep,&intpart);
+         ckxlip=intpart*intpart;
+        if(ckxlip<=mani){xl.push_back(ckxlip);lx.push_back(ep);}
+            if(ckxlip>mani){
+                while(ckxlip>mani){
+                //std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
+                ep=ep/10;
+                fractpart=modf(ep,&intpart);
+                ckxlip=intpart*intpart;
+                if(ckxlip<=mani){xl.push_back(ckxlip);lx.push_back(ep);break;}
+            }
+        }
+        if(v_log==1){cout<<"i insert "<<std::setprecision(preci)<<ckxlip <<" " << std::setprecision(preci)<<ep <<"\n";}
+    }
+ckep=0;
+    if(!isinf(dd)){
+        fractpart=modf(dd,&intpart);
+        ckep=intpart*intpart;
+            if(ckep<=mani){xl.push_back(ckep);lx.push_back(dd);}
+            if(ckep>mani){
+                while(ckep>mani){
+                   // std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
+                    dd=dd/10;
+                    fractpart=modf(dd,&intpart);
+                    ckep=intpart*intpart;
+                    if(ckep<=mani){xl.push_back(ckep);lx.push_back(dd);break;}
+        }
+    }
+        if(v_log==1){cout<<"i insert "<<std::setprecision(preci)<<ckep <<" " << std::setprecision(preci)<<dd <<"\n";}
+    }
+ckdd=0;
+    if(!isinf(st)){
+        fractpart=modf(st,&intpart);
+        ckdd=intpart*intpart;
+            if(ckdd<=mani){xl.push_back(ckdd);lx.push_back(st);}
+            if(ckdd>mani){
+                while(ckdd>mani){
+                   // std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
+                    st=st/10;
+                    fractpart=modf(st,&intpart);
+                    ckdd=intpart*intpart;
+                    if(ckdd<=mani){xl.push_back(ckdd);lx.push_back(st);break;}
+                }
+            }
+        if(v_log==1){cout<<"i insert "<<std::setprecision(preci)<<ckdd <<" " << std::setprecision(preci)<<st <<"\n";}
+    }
+ckddd=0;
+    if(!isinf(sh)){
+        fractpart=modf(sh,&intpart);
+        ckddd=intpart*intpart;
+            if(ckddd<=mani){xl.push_back(ckddd);lx.push_back(sh);}
+            if(ckddd>mani){
+                while(ckddd>mani){
+                  //  std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
+                    sh=sh/10;
+                    fractpart=modf(sh,&intpart);
+                    ckddd=intpart*intpart;
+                    if(ckddd<=mani){xl.push_back(ckddd);lx.push_back(sh);break;}
+                }
+            }
+        if(v_log==1){cout<<"i insert "<<std::setprecision(preci)<<ckddd <<" " << std::setprecision(preci)<<sh <<"\n";}
+    }
+ckddf=0;
+    if(!isinf(shep)){
+            fractpart=modf(shep,&intpart);
+            ckddf=intpart*intpart;
+            if(ckddf<=mani){xl.push_back(ckddf);lx.push_back(shep);}
+            if(ckddf>mani){
+                while(ckddf>mani){
+                    //std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
+                    shep=shep/10;
+                    fractpart=modf(shep,&intpart);
+                    ckddf=intpart*intpart;
+                    if(ckddf<=mani){xl.push_back(ckddf);lx.push_back(shep);break;}
+                }
+            }
+        if(v_log==1){cout<<"i insert "<<std::setprecision(preci)<<ckddf <<" " << std::setprecision(preci)<<shep <<"\n";}
+    }
+cksh=0;
+    if(!isinf(shdd)){
+        fractpart=modf(shdd,&intpart);
+        cksh=intpart*intpart;
+        if(cksh<=mani){xl.push_back(cksh);lx.push_back(shdd);}
+        if(cksh>mani){
+            while(cksh>mani){
+                //std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
+                shdd=shdd/10;
+                fractpart=modf(shdd,&intpart);
+                cksh=intpart*intpart;
+                if(cksh<=mani){xl.push_back(cksh);lx.push_back(shdd);break;}
+            }
+        }
+        if(v_log==1){cout<<"i insert "<<std::setprecision(preci)<<cksh <<" " << std::setprecision(preci)<<shdd <<"\n";}
+    }
+ckshep=0;
+    if(!isinf(ddd)){
+        fractpart=modf(ddd,&intpart);
+        ckshep=intpart*intpart;
+        if(ckshep<=mani){xl.push_back(ckshep);lx.push_back(ddd);}
+        if(ckshep>mani){
+            while(ckshep>mani){
+               // std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
+                ddd=dd/10;
+                fractpart=modf(ddd,&intpart);
+                ckshep=intpart*intpart;
+                if(ckshep<=mani){xl.push_back(ckshep);lx.push_back(ddd);break;}
+            }
+        }
+        if(v_log==1){cout<<"i insert "<<std::setprecision(preci)<<ckshep <<" " << std::setprecision(preci)<<ddd <<"\n";}
+    }
+ckshdd=0;
+    if(!isinf(ddf)){
+        fractpart=modf(ddf,&intpart);
+        ckshdd=intpart*intpart;
+        if(ckshdd<=mani){xl.push_back(ckshdd);lx.push_back(ddf);}
+        if(ckshdd>mani){
+        while(ckshdd>mani){
+                //std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
+                ddf=ddf/10;
+                fractpart=modf(ddf,&intpart);
+                ckshdd=intpart*intpart;
+                if(ckshdd<=mani){xl.push_back(ckshdd);lx.push_back(ddf);break;}
+            }
+        }
+        if(v_log==1){cout<<"i insert "<<std::setprecision(preci)<<ckshdd <<" " << std::setprecision(preci)<<ddf <<"\n";}
+    }
+    return 0;
+}

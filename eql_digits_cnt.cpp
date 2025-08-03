@@ -25,6 +25,7 @@ eql_digits_cnt& eql_digits_cnt::operator=(const eql_digits_cnt& rhs)
 
 int eql_digits_cnt::fcnt(long double mn,long double da_number,int prc,int logic,int log_lvl)
 {
+    if(log_lvl==1){cout<<"entering function fcnt @@ eql_digits_cnt.cpp/h \n";}
     char ck;
     int lk;
     stringstream mnp;
@@ -54,5 +55,6 @@ int eql_digits_cnt::fcnt(long double mn,long double da_number,int prc,int logic,
       }
       if(brk==1){break;}
     }
+    if(log_lvl==1){cout<<"leaving function fcnt @@ eql_digits_cnt.cpp/h \n";}
     return 0;
 }
