@@ -1,5 +1,7 @@
 #include "bee_cls.h"
-
+#include <string>
+#include <iostream>
+#include <sstream>
 using namespace std;
 
         vector<string> all_s;
@@ -19,7 +21,7 @@ int bee_cls::bee_show(int lxpre){
  cout<<"--------------------------------------\n";
  for(auto ip=0;ip<=all_s.size()-1;ip++){
     std::this_thread::sleep_for(std::chrono::milliseconds(lxpre));
-    cout<<all_s[ip] << " \n";
+    cout<<std::setprecision(lxpre)<<all_s[ip] << " \n";
  }
  cout<<"--------------------------------------\n";
     sal.clear();
@@ -32,8 +34,9 @@ int bee_cls::bee_show(int lxpre){
 int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
     rtr=0;lxpre=-1; first=0,second=0,rst=0; f_dit=0;xp=-1;lk=0;
     drf=0;fr_f=0,int_f=0,fr_s=0,int_s=0,fr_rs=0,int_rsl=0; get_dfr=0;
-    newd,new_int_t=-1,nr_lw;myfunc=-1,xpp=1,stop=-1,status=-1,lx=1,tmp_lk=-1,tms=0,go_down=0;
-    longda_rst,da_sq_rst,fr_da,int_da;long double recheck_them;long double frck,intck;long double ddddr;
+    newd=0,new_int_t=-1,nr_lw=0;myfunc=-1,xpp=1,stop=-1,status=-1,lx=1,tmp_lk=-1,tms=0,go_down=0;
+    da_rst=0,da_sq_rst=0,fr_da=0,int_da=0;recheck_them=0; frck=0,intck=0; ddddr=0;
+    insr=0;st=0;fbd=0;
     cout<<"first number second number is the qube one dimension and third the precision \n";
     eql_digits_cnt *b_d=new eql_digits_cnt();
     first=fr;
@@ -88,7 +91,10 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
     cout<<"entering with number of " <<std::setprecision(lxpre) <<newd <<"\n";
     string int_string;string mn_string;
     mn_string.clear();
-    mn_string+=to_string(newd);
+    stringstream sl_rst;
+    sl_rst<<std::setprecision(lxpre)<<newd;
+    mn_string+=sl_rst.str();
+    //mn_string+=to_string(newd);
     tmp_lk=lk;
     //sometimes the value of power of the second is bigger than the first so we use the second-1;
     //so we recheck
@@ -102,9 +108,8 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
       if(logl==1){cout<<"lowering second to value of " <<std::setprecision(lxpre)<< second <<"\n"; cout<<"\n";}
       second=second-1;
     }
-    int insr=0;int st=0;int fbd=0;
     for(;;){
-        drf=0;
+        drf=0;da_rst=0;da_sq_rst=0;
         std::this_thread::sleep_for(std::chrono::milliseconds(lxpre));
         if(logl==1){cout<<"     ----> using " <<std::setprecision(lxpre) << newd ;
                        //cout<<" with string " << mn_string;
@@ -113,7 +118,7 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
         tms+=1;
         if(logl==1){cout<<" rst is " <<std::setprecision(lxpre)<< nr_lw <<"\n";}
         da_rst=-1;
-        frck=modf(nr_lw,&intck);
+        frck=modfl(nr_lw,&intck);
         if(logl==1){cout <<"     ----> using " <<std::setprecision(lxpre)<< nr_lw <<" with intpart " <<std::setprecision(lxpre)<< intck <<" and fract " <<std::setprecision(lxpre)<< frck <<"\n";}
         da_rst=second+frck;
         da_sq_rst=da_rst*da_rst;
@@ -133,9 +138,12 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
                 insr=fbd;
                 sal.clear();
                 sal+=to_string(fbd);
-                sal+=" ";
-                sal+=to_string(da_rst);
-                sal+=" ";
+                sal+=" PWR: ";
+                stringstream mla;
+                mla<<std::setprecision(lxpre)<<da_rst;
+                cout<<"DDA MLA "<< mla.str() <<"\n";
+                sal+=mla.str();
+                sal+=" | ";
                 sal+=to_string(da_sq_rst);
                 sal+=" ";
                 sal+=to_string(drf);
@@ -155,8 +163,17 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
                             st=1;
                             sal.clear();
                             sal+=to_string(fbd);
-                            sal+=" ";
-                            sal+=to_string(da_rst);
+                            sal+=" PWR tw ";
+                            stringstream mla;
+                            mla<<std::setprecision(lxpre)<<da_rst;
+                            cout<<"DDA MLA "<< mla.str() <<"\n";
+                            sal+=mla.str();
+                            long double aml;
+                            aml=stold(mla.str());
+                            cout<<"da aml " << aml <<"\n" ;
+                            long double ak;
+                            ak=aml*
+                            //sal+=to_string(da_rst);
                             sal+=" ";
                             sal+=to_string(da_sq_rst);
                             sal+=" ";

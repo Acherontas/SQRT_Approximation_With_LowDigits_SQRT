@@ -1,5 +1,7 @@
 #include "bee_cls.h"
-
+#include <string>
+#include <iostream>
+#include <sstream>
 using namespace std;
 
         vector<string> all_s;
@@ -19,7 +21,7 @@ int bee_cls::bee_show(int lxpre){
  cout<<"--------------------------------------\n";
  for(auto ip=0;ip<=all_s.size()-1;ip++){
     std::this_thread::sleep_for(std::chrono::milliseconds(lxpre));
-    cout<<all_s[ip] << " \n";
+    cout<<std::setprecision(lxpre)<<all_s[ip] << " \n";
  }
  cout<<"--------------------------------------\n";
     sal.clear();
@@ -89,7 +91,10 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
     cout<<"entering with number of " <<std::setprecision(lxpre) <<newd <<"\n";
     string int_string;string mn_string;
     mn_string.clear();
-    mn_string+=to_string(newd);
+    stringstream sl_rst;
+    sl_rst<<std::setprecision(lxpre)<<newd;
+    mn_string+=sl_rst.str();
+    //mn_string+=to_string(newd);
     tmp_lk=lk;
     //sometimes the value of power of the second is bigger than the first so we use the second-1;
     //so we recheck
@@ -104,7 +109,7 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
       second=second-1;
     }
     for(;;){
-        drf=0;
+        drf=0;da_rst=0;da_sq_rst=0;
         std::this_thread::sleep_for(std::chrono::milliseconds(lxpre));
         if(logl==1){cout<<"     ----> using " <<std::setprecision(lxpre) << newd ;
                        //cout<<" with string " << mn_string;
@@ -113,7 +118,7 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
         tms+=1;
         if(logl==1){cout<<" rst is " <<std::setprecision(lxpre)<< nr_lw <<"\n";}
         da_rst=-1;
-        frck=modf(nr_lw,&intck);
+        frck=modfl(nr_lw,&intck);
         if(logl==1){cout <<"     ----> using " <<std::setprecision(lxpre)<< nr_lw <<" with intpart " <<std::setprecision(lxpre)<< intck <<" and fract " <<std::setprecision(lxpre)<< frck <<"\n";}
         da_rst=second+frck;
         da_sq_rst=da_rst*da_rst;
@@ -133,9 +138,11 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
                 insr=fbd;
                 sal.clear();
                 sal+=to_string(fbd);
-                sal+=" ";
-                sal+=to_string(da_rst);
-                sal+=" ";
+                sal+=" PWR: ";
+                stringstream mla;
+                mla<<std::setprecision(lxpre)<<da_rst;
+                sal+=mla.str();
+                sal+=" | ";
                 sal+=to_string(da_sq_rst);
                 sal+=" ";
                 sal+=to_string(drf);
@@ -155,8 +162,11 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
                             st=1;
                             sal.clear();
                             sal+=to_string(fbd);
-                            sal+=" ";
-                            sal+=to_string(da_rst);
+                            sal+=" PWR tw ";
+                            stringstream mla;
+                            mla<<std::setprecision(lxpre)<<da_rst;
+                            sal+=mla.str();
+                            //sal+=to_string(da_rst);
                             sal+=" ";
                             sal+=to_string(da_sq_rst);
                             sal+=" ";
@@ -193,7 +203,10 @@ int bee_cls::bee_man(long double fr,long double sc,int rts,int logl){
                             sal+=" / for ur number ";
                             sal+=to_string(first);
                             sal+="  |power result is ";
-                            sal+=to_string(da_rst);
+                            stringstream da_fnl;
+                            da_fnl<<std::setprecision(lxpre)<<da_rst;
+                            sal+=da_fnl.str();
+                            //sal+=to_string(da_rst);
                             sal+="  | ";
                             sal+=to_string(da_sq_rst);
                             all_s.push_back(sal);

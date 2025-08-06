@@ -24,7 +24,7 @@ part_of& part_of::operator=(const part_of& rhs)
 
 
 long double part_of::get_the_part(long double nbm,int till,int prc){
-     string sk;
+
      sk.clear();
      this->rvt.clear();
      this->rtv=0;
@@ -34,11 +34,11 @@ long double part_of::get_the_part(long double nbm,int till,int prc){
      stringstream ms;
      ms<<std::setprecision(prc)<<nbm;
      sk+=ms.str();
-     char ck; int lk=0;
-     int all_pos=0;
-     int tmp_till=0;
+     lk=0;
+     all_pos=0;
+     tmp_till=0;
      tmp_till=till;
-     int pd=0;
+     pd=0;
      if(till==-1){tmp_till=sk.size()-1;}
      //cout<<"using " << sk << " with " << tmp_till <<"\n";
      for(int i=0;i<=tmp_till;i++){

@@ -20,6 +20,12 @@ class part_of
         long double qrt;
         int all_length;
         int dot_pos;
+        string sk;
+        char ck;
+        int lk=0;
+        int all_pos=0;
+        int tmp_till=0;
+        int pd=0;
         long double get_the_part(long double nbm,int till,int prc);
 
     protected:

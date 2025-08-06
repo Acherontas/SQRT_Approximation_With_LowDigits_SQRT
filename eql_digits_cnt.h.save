@@ -14,9 +14,10 @@ class eql_digits_cnt
         eql_digits_cnt(const eql_digits_cnt& other);
         eql_digits_cnt& operator=(const eql_digits_cnt& other);
         int f_cnt;
-        int main_number_ar[1000];
+        int mn_ar[1000];
         int mnarcnt=0;
-        int fcnt(long double main,long double da_number,int prc);
+        
+        int fcnt(long double mn,long double da_number,int prc,int logic,int log_lvl);
     protected:
 
     private:

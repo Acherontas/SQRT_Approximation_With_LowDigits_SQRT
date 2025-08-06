@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1753513532 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/get_the_sum.cpp
+1754288670 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/get_the_sum.cpp
 	"get_the_sum.h"
 	<string.h>
 	<math.h>
 	<iostream>
 
-1753513156 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/get_the_sum.h
+1754288619 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/get_the_sum.h
 	<string.h>
 	<string>
 	<math.h>
@@ -14,7 +14,7 @@
 	<iostream>
 	<iomanip>
 
-1754251898 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/main.cpp
+1754468078 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/main.cpp
 	<iostream>
 	<math.h>
 	<iomanip>
@@ -33,17 +33,17 @@
 	"sqti_cls.h"
 	"vcc_part_one.h"
 
-1753377268 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/after_the_dot.cpp
+1754288371 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/after_the_dot.cpp
 	"after_the_dot.h"
 
-1753368283 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/after_the_dot.h
+1754288358 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/after_the_dot.h
 	<string.h>
 	<iostream>
 
-1754144524 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/part_of.cpp
+1754421805 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/part_of.cpp
 	"part_of.h"
 
-1753513760 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/part_of.h
+1754288742 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/part_of.h
 	<string>
 	<math.h>
 	<string>
@@ -51,10 +51,11 @@
 	<iostream>
 	<iomanip>
 
-1754141423 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/eql_digits_cnt.cpp
+1754336946 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/eql_digits_cnt.cpp
 	"eql_digits_cnt.h"
+	<sstream>
 
-1753943187 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/eql_digits_cnt.h
+1754288539 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/eql_digits_cnt.h
 	<string>
 	<math.h>
 	<iomanip>
@@ -70,17 +71,21 @@
 	<bits/stdc++.h>
 	<vector>
 
-1754252471 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/bee_cls.cpp
+1754468133 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/bee_cls.cpp
 	"bee_cls.h"
+	<string>
+	<iostream>
+	<sstream>
 
 1754246862 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/check_sqrti.cpp
 	"check_sqrti.h"
 
-1754246919 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/check_sqrti.h
+1754336936 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/check_sqrti.h
 	<vector>
 	<iostream>
 	<math.h>
 	<iomanip>
+	<sstream>
 	<bits/stdc++.h>
 
 1754246450 /home/acherontas/codeblocks/sqrt_sum_of_times_arm64/sqti_cls.h
@@ -90,7 +95,7 @@
 	"after_the_dot.h"
 	"check_sqrti.h"
 
-1754250280 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/vcc_part_one.cpp
+1754337605 source:/home/acherontas/codeblocks/sqrt_sum_of_times_arm64/vcc_part_one.cpp
 	"vcc_part_one.h"
 	"eql_digits_cnt.h"
 

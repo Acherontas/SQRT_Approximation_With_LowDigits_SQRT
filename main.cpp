@@ -137,6 +137,7 @@ int main(int argc,char** argv)
                   cout<<"moving with ps_ask " << ps_ask <<"\n";
                   std::this_thread::sleep_for(std::chrono::milliseconds(st_th));
                  }
+    cout<<"creating  vcc_part_one instance .... \n";
     vcc_part_one *vcpo=new vcc_part_one();
     vcpo->fill_vcc(mynmb,lt_main,preci,v_log,st_th,ps_ask,psif);
     cout<<"\n";
@@ -167,11 +168,13 @@ int main(int argc,char** argv)
                 cout<<"\n";
                 cout<<"-------------------Calculation Bee--------------------------------\n";
                 bee->bee_man(mynmb,vcpo->for_the_bee[it],preci,v_bee_log);
-                bee->bee_show(preci);
-                bee->~bee_cls();
                 if(bee_x_stp!=1){cout<<"-------------------------------------------------\n";}
                 //if(bee->rtr==1){break;}
            }
+           cout<<"------------All Results From Bee----------- \n";
+           cout<<"Higher number @ first columns nearest u are \n";
+           bee->bee_show(preci);
+           bee->~bee_cls();
         }
         if(bee_x_stp==1){break;}
         if(bee_x_stp!=1){

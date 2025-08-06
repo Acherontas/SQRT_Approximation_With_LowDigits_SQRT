@@ -1,3 +1,6 @@
+./sqrt_sum_of_times_arm64 878946545465764654864654864564867648453465454564564654546745645127 100 0 1 1 1 -1>> 440_1_2_3@hub.txt
+
+
 voyeristic behaviours and others have fun 
 ur number ,ur precision , ur sleep time , ur log ,ur automation 0 no 1 auto , ur bee auto 0 for no log 1 for log 
 the approximation while loops times to run if -1 infinite loop will occur until other equations gets equal 

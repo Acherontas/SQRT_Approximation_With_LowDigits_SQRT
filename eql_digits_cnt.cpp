@@ -1,33 +1,18 @@
 #include "eql_digits_cnt.h"
+#include <sstream>
 
 
-eql_digits_cnt::eql_digits_cnt()
-{
-    //ctor
-}
-
-eql_digits_cnt::~eql_digits_cnt()
-{
-    //dtor
-}
-
-eql_digits_cnt::eql_digits_cnt(const eql_digits_cnt& other)
-{
-    //copy ctor
-}
-
+eql_digits_cnt::eql_digits_cnt(){} //ctor
+eql_digits_cnt::~eql_digits_cnt(){}//dtor
+eql_digits_cnt::eql_digits_cnt(const eql_digits_cnt& other){}//copy ctor
+// handle self assignment//assignment operator
 eql_digits_cnt& eql_digits_cnt::operator=(const eql_digits_cnt& rhs)
-{
-    if (this == &rhs) return *this; // handle self assignment
-    //assignment operator
-    return *this;
-}
+{if (this == &rhs) return *this; return *this;}
 
 int eql_digits_cnt::fcnt(long double mn,long double da_number,int prc,int logic,int log_lvl)
 {
     if(log_lvl==1){cout<<"entering function fcnt @@ eql_digits_cnt.cpp/h \n";}
-    char ck;
-    int lk;
+    lk=0;
     stringstream mnp;
     mnp<<std::setprecision(prc)<<da_number;
     if(log_lvl==1){cout<<"will count the digit from " <<std::setprecision(prc)<< mnp.str() <<"\n";}
@@ -35,7 +20,7 @@ int eql_digits_cnt::fcnt(long double mn,long double da_number,int prc,int logic,
     slk.clear();
     slk+=mnp.str();
     if(log_lvl==1){cout<<"with string of it " << slk <<"\n";}
-    int brk=0;
+    brk=0;
     this->f_cnt=0;
     for(int i=0;i<=slk.size()-1;i++){
       ck=slk.at(i);

@@ -18,6 +18,14 @@ class get_the_sum
         get_the_sum(const get_the_sum& other);
         get_the_sum& operator=(const get_the_sum& other);
         int gt_leng=0;
+        string jk;
+        char mk;
+        int lk=0;
+        long double smbi=0;
+        int lgt=0;
+        string ltg;
+
+
         long double get_da_number(long double nmbi,int st,int prc);
 
 

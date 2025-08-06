@@ -9,6 +9,7 @@ vcc_part_one& vcc_part_one::operator=(const vcc_part_one& rhs)// handle self ass
 
 eql_digits_cnt *eqdgq=new eql_digits_cnt();
 int vcc_part_one::show_vcc(long double entered,long double mynmb,int preci,int v_log,int st_th,int sxli){
+  if(v_log==1){cout<<"entered show_vcc function @ vcc_part_one class \n";}
   eqdgq->fcnt(0,mynmb,preci,1,0);
   bee_tmpf=0;
   xli=0;
@@ -142,6 +143,7 @@ part_of *ptr=new part_of();
 part_of *prt=new part_of();
 int vcc_part_one::fill_vcc(long double mynmb,long double lt_main,int preci,int v_log,int st_th,int ps_ask,int psif){
     psif=1;
+    if(v_log==1){cout<<"entered fill_vcc function @ vcc_part_one class \n";}
     for(;;){
     abqr=0,baqr=0,ab=0,ba=0;ldb=0;by_one=0;adb=0;ad=0;
     pd=0;lap=0;t_ten=10;t_rst=0;rst_f=0;frc=0,intprt=0;

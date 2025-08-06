@@ -3,18 +3,15 @@
 
 eql_digits_cnt::eql_digits_cnt()
 {
-    //ctor
-}
+   
+} //ctor
 
-eql_digits_cnt::~eql_digits_cnt()
-{
-    //dtor
-}
+eql_digits_cnt::~eql_digits_cnt(){}//dtor
 
 eql_digits_cnt::eql_digits_cnt(const eql_digits_cnt& other)
 {
-    //copy ctor
-}
+    
+}//copy ctor
 
 eql_digits_cnt& eql_digits_cnt::operator=(const eql_digits_cnt& rhs)
 {
@@ -28,7 +25,6 @@ int eql_digits_cnt::fcnt(long double mn,long double da_number,int prc,int logic,
     if(log_lvl==1){cout<<"entering function fcnt @@ eql_digits_cnt.cpp/h \n";}
     char ck;
     int lk;
-    if()
     stringstream mnp;
     mnp<<std::setprecision(prc)<<da_number;
     if(log_lvl==1){cout<<"will count the digit from " <<std::setprecision(prc)<< mnp.str() <<"\n";}
