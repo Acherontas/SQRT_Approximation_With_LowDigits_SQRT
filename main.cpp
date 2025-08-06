@@ -181,5 +181,9 @@ int main(int argc,char** argv)
            cout<<"-------------------------------------------------\n";
         }
     }
+    long double flt;
+    flt=sqrt(mynmb);
+    cout<<"with main number " << std::setprecision(preci)<<mynmb <<"\n";
+    cout<<"with the internal math.h sqrt function " << std::setprecision(preci)<<flt <<"\n";
     return 0;
 }
